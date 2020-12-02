@@ -1,0 +1,32 @@
+body{
+    background-color: olive;
+    color: lemonchiffon;
+    text-align: center;
+}
+#head, #foot{
+    text-align: left;
+}
+#head #button{
+    position: absolute;
+    top: 15px;
+    right: 30px;
+}
+#footLeft{
+    position: absolute;
+    bottom: 15px;
+}
+#footRight{
+    position: absolute;
+    bottom: 15px;
+    right: 30px;
+}
+#foot a{
+    margin:15px;
+}
+h1{
+    font-size: 300%;
+}
+img{
+    width: 35px;
+    height: 35px;
+}
