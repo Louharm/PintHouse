@@ -8,11 +8,11 @@
 </head>
 <body>
 <div id="head">
-    <h1>Pinthouse</h1>
+    <h1><a method="POST" href="${pageContext.request.contextPath}/home">Pinthouse</a></h1>
     <div id="button">
-        <button>Connexion</button>
-        <button>Inscription</button>
-        <img src='<spring:url value="/images/panier.png"/>' alt="langues"/>
+        <a method="POST" href="${pageContext.request.contextPath}/connection">Connexion</a>
+        <a method="POST" href="${pageContext.request.contextPath}/inscription">Inscription</a>
+        <a method="POST" href="${pageContext.request.contextPath}/cart"><img src='<spring:url value="/images/cart.png"/>' alt="langues"/></a>
     </div>
 </div>
 <div>
@@ -20,10 +20,10 @@
 </div>
 <div id="foot">
     <div id="footLeft">
-        <a>About us</a>
-        <a>Contact</a>
+        <a method="POST" href="${pageContext.request.contextPath}/aboutUs">About us</a>
+        <a method="POST" href="${pageContext.request.contextPath}/contact">Contact</a>
     </div>
-    <img id="footRight" src='<spring:url value="/images/translate.png"/>' alt="langues"/>
+    <img id="footRight" src='<spring:url value="/images/translate.png"/>' alt="langues" method="POST" action = "/pinthouse/language"/>
 </div>
 </body>
 </html>

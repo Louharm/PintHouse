@@ -1,7 +1,11 @@
 body{
     background-color: olive;
-    color: lemonchiffon;
+    color: red;
     text-align: center;
+}
+a{
+    text-decoration: none;
+    color: lemonchiffon;
 }
 #head, #foot{
     text-align: left;

@@ -5,6 +5,5 @@
 <head>
 </head>
 <body>
-<p>Contact</p>
 </body>
 </html>

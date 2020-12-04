@@ -5,6 +5,6 @@
 <head>
 </head>
 <body>
-<p>Contact</p>
+<p>Panier</p>
 </body>
 </html>
