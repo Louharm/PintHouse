@@ -6,11 +6,11 @@
 </head>
 <body>
 Inscription :
-<form:form id="formSignUp" method="POST" action="/pinthouse/inscription/send" modelAttribute="inscriptionForm">
-    <form:label path="userLastName">Nom de famille :</form:label>
-    <form:input path="userLastName"/>
-    <form:label path="userFirstName">Prénom :</form:label>
-    <form:input path="userFirstName"/>
+<form:form id="formSignUp" method="POST" action="/pinthouse/inscription/send" modelAttribute="currentUser">
+    <form:label path="lastName">Nom de famille :</form:label>
+    <form:input path="lastName"/>
+    <form:label path="firstName">Prénom :</form:label>
+    <form:input path="firstName"/>
     <form:label path="email">Adresse mail :</form:label>
     <form:input path="email"/>
     <form:label path="password">Mot de passe :</form:label>

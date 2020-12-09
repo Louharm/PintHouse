@@ -2,37 +2,22 @@ package com.spring.henallux.pinthouse.model;
 
 import java.util.GregorianCalendar;
 
-public class User {
-    private Integer id;
+public class UserForm {
     private String lastName;
     private String firstName;
     private String password;
+    private String confirmPassword;
     private String email;
-    private GregorianCalendar birthdate;
+    private String birthDate;
     private String street;
-    private Integer numHouse;
+    private String numHouse;
     private String phoneNumber;
-    private Integer cityId;
+    private String city;
+    private String postCode;
+    private String country;
+    private String phone;
 
-    public User(Integer id, String lastName, String firstName, String password, String email, GregorianCalendar birthdate, String street, Integer numHouse, String phoneNumber, Integer cityId) {
-        this.id = id;
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.password = password;
-        this.email = email;
-        this.birthdate = birthdate;
-        this.street = street;
-        this.numHouse = numHouse;
-        this.phoneNumber = phoneNumber;
-        this.cityId = cityId;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
+    public UserForm() {
     }
 
     public String getLastName() {
@@ -59,6 +44,14 @@ public class User {
         this.password = password;
     }
 
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -67,12 +60,12 @@ public class User {
         this.email = email;
     }
 
-    public GregorianCalendar getBirthdate() {
-        return birthdate;
+    public String getBirthDate() {
+        return birthDate;
     }
 
-    public void setBirthdate(GregorianCalendar birthdate) {
-        this.birthdate = birthdate;
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
     }
 
     public String getStreet() {
@@ -83,11 +76,11 @@ public class User {
         this.street = street;
     }
 
-    public Integer getNumHouse() {
+    public String getNumHouse() {
         return numHouse;
     }
 
-    public void setNumHouse(Integer numHouse) {
+    public void setNumHouse(String numHouse) {
         this.numHouse = numHouse;
     }
 
@@ -99,11 +92,35 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public Integer getCityId() {
-        return cityId;
+    public String getCity() {
+        return city;
     }
 
-    public void setCityId(Integer cityId) {
-        this.cityId = cityId;
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getPostCode() {
+        return postCode;
+    }
+
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }
