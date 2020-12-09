@@ -1,4 +1,15 @@
+DROP TABLE IF EXISTS Beer_Promotion CASCADE;
+DROP TABLE IF EXISTS CommandeLine CASCADE;
+DROP TABLE IF EXISTS Beer CASCADE;
 DROP TABLE IF EXISTS Promotion CASCADE;
+DROP TABLE IF EXISTS BeerColor CASCADE;
+DROP TABLE IF EXISTS BeerType CASCADE;
+DROP TABLE IF EXISTS Brewery CASCADE;
+DROP TABLE IF EXISTS Commande CASCADE;
+DROP TABLE IF EXISTS User CASCADE;
+DROP TABLE IF EXISTS City CASCADE;
+DROP TABLE IF EXISTS Country CASCADE;
+
 CREATE TABLE Promotion(
 	id integer NOT NULL AUTO_INCREMENT,
 	constraint idPromotionPK PRIMARY KEY (id),
@@ -7,104 +18,93 @@ CREATE TABLE Promotion(
 	value integer NOT NULL
 );
 
-DROP TABLE IF EXISTS BeerColor CASCADE;
 CREATE TABLE BeerColor(
-	nameColorEn varchar NOT NULL,
+	nameColorEn varchar(255) NOT NULL,
 	constraint nameColorEnPK PRIMARY KEY (nameColorEn),
-	nomFr varchar NOT NULL
+	nomFr varchar(255) NOT NULL
 );
 
-DROP TABLE IF EXISTS BeerType CASCADE;
 CREATE TABLE BeerType(
-	typeNameEn varchar NOT NULL,
+	typeNameEn varchar(255) NOT NULL,
 	constraint typeNameEnPK PRIMARY KEY (typeNameEn),
-	nomFr varchar NOT NULL
+	nomFr varchar(255) NOT NULL
 );
 
-DROP TABLE IF EXISTS Brewery CASCADE;
 CREATE TABLE Brewery(
-	nameEn varchar NOT NULL,
+	nameEn varchar(255) NOT NULL,
 	constraint nameEnPK PRIMARY KEY (nameEn),
-	nomFr varchar NOT NULL
+	nomFr varchar(255) NOT NULL
 );
 
-DROP TABLE IF EXISTS Country CASCADE;
 CREATE TABLE Country(
-	nameEn varchar NOT NULL,
+	nameEn varchar(255) NOT NULL,
 	constraint nameEnCountryPK PRIMARY KEY (nameEn),
-	nomFr varchar NOT NULL
+	nomFr varchar(255) NOT NULL
 );
 
-DROP TABLE IF EXISTS Beer CASCADE;
 CREATE TABLE Beer(
-	name varcher NOT NULL,
+	name varchar(255) NOT NULL,
 	constraint namePK PRIMARY KEY (name),
-	description varchar,
+	description varchar(255),
 	alcoholPerc float(4,2) NOT NULL,
 	capacityCl float(4,2) NOT NULL,
 	price float(6,2) NOT NULL,
-	breweryName varchar NOT NULL,
+	breweryName varchar(255) NOT NULL,
 	constraint BreweryNameFK FOREIGN KEY (breweryName) REFERENCES Brewery (nameEn),
-	countryName varchar NOT NULL,
+	countryName varchar(255) NOT NULL,
 	constraint CountryNameFK FOREIGN KEY (countryName) REFERENCES Country (nameEn),
-	beerTypeName varchar NOT NULL,
+	beerTypeName varchar(255) NOT NULL,
 	constraint BeerTypeNameFK FOREIGN KEY (beerTypeName) REFERENCES BeerType (typeNameEn),
-	beerColor varchar NOT NULL,
+	beerColor varchar(255) NOT NULL,
 	constraint BeerColorFK FOREIGN KEY (beerColor) REFERENCES BeerColor(nameColorEn)
 );
 
-DROP TABLE IF EXISTS Beer_Promotion CASCADE;
 CREATE TABLE Beer_Promotion(
-	beerName varchar NOT NULL,
-	constraint beerNamePK PRIMARY KEY (beerName),
+	beerName varchar(255) NOT NULL,
 	constraint beerNameFK FOREIGN KEY (beerName) REFERENCES Beer (name),
 	promotionId integer NOT NULL,
-	constraint promotionIdPK PRIMARY KEY (promotionId),
+	constraint beer_promotionPK PRIMARY KEY (promotionId, beerName),
 	constraint promotionIdFK FOREIGN KEY (promotionId) REFERENCES Promotion (id)
 ); 
 
-DROP TABLE IF EXISTS City CASCADE;
 CREATE TABLE City(
 	id integer NOT NULL,
 	constraint idPK PRIMARY KEY (id),
-	name varchar NOT NULL,
+	name varchar(255) NOT NULL,
 	postCode integer NOT NULL,
-	countryName varchar NOT	NULL,
-	constraint countryNameFK FOREIGN KEY (countryName) REFERENCES Country (nameEn)
+	countryName varchar(255) NOT NULL,
+	constraint city_countryNameFK FOREIGN KEY (countryName) REFERENCES Country (nameEn)
 );
 
-DROP TABLE IF EXISTS User CASCADE;
 CREATE TABLE User(
 	id integer NOT NULL,
 	constraint idPK PRIMARY KEY (id),
-	lastName varchar NOT NULL,
-	firstName varchar NOT NULL,
-	password varchar NOT NULL,
-	email varchar NOT NULL UNIQUE,
+	lastName varchar(255) NOT NULL,
+	firstName varchar(255) NOT NULL,
+	password varchar(255) NOT NULL,
+	email varchar(255) NOT NULL UNIQUE,
 	birthdate date NOT NULL,
-	street varchar NOT NULL,
+	street varchar(255) NOT NULL,
 	numHouse integer NOT NULL,
-	phoneNumber varchar
+	phoneNumber varchar(255),
 	cityId integer NOT NULL,
-	constraint cityIdFK FOREIGN KEY cityId REFERENCES City (id) 
+	constraint cityIdFK FOREIGN KEY (cityId) REFERENCES City (id) 
 );
 
-DROP TABLE IF EXISTS Commande CASCADE;
 CREATE TABLE Commande(
 	id integer NOT NULL,
 	constraint idPK PRIMARY KEY (id),
 	commandeDate date NOT NULL,
 	userId integer NOT NULL,
-	constraint userIdFK FOREIGN KEY userId REFERENCES User(id) 
+	constraint userIdFK FOREIGN KEY (userId) REFERENCES User(id) 
 );
 
-DROP TABLE IF EXISTS CommandeLine CASCADE;
 CREATE TABLE CommandeLine(
 	id integer NOT NULL,
 	constraint idPK PRIMARY KEY (id),
 	realPrice float(8,2) NOT NULL,
-	beerName varchar NOT NULL,
-	constraint beerNameFK FOREIGN KEY beerName REFERENCES Beer (name),
+	beerName varchar(255) NOT NULL,
+	constraint beerFK FOREIGN KEY (beerName) REFERENCES Beer (name),
 	commandeId integer NOT NULL,
-	constraint commandeIdFK FOREIGN KEY commandeId REFERENCES Commande (id)
+	constraint commandeIdFK FOREIGN KEY (commandeId) REFERENCES Commande (id)
 );
