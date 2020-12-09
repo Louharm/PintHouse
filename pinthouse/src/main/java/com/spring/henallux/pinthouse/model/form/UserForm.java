@@ -1,4 +1,4 @@
-package com.spring.henallux.pinthouse.model;
+package com.spring.henallux.pinthouse.model.form;
 
 import java.util.GregorianCalendar;
 

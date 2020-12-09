@@ -1,0 +1,16 @@
+#form{
+    width:600px;
+    margin: auto;
+}
+input{
+    margin: 5px;
+}
+.petitChamp{
+    width: 75px;
+}
+form button{
+    padding: 5px;
+    width:100px;
+    margin: auto;
+    border-radius: 10px;
+}

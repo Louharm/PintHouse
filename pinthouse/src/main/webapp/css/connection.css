@@ -1,0 +1,26 @@
+.linkToButton{
+    text-align: center;
+    display: block;
+    width: 90px;
+    margin: auto;
+    padding:5px 5px;
+    background-color: aliceblue;
+    color: black;
+    border-radius: 10px;
+}
+#form{
+    width:300px;
+    margin: auto;
+}
+form{
+    margin-top:50px;
+}
+input{
+    margin: 10px;
+}
+form button{
+    padding: 5px;
+    width: 100px;
+    margin: auto;
+    border-radius: 10px;
+}

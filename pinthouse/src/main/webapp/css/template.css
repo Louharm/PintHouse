@@ -1,6 +1,8 @@
 body{
     background-color: olive;
     color: lemonchiffon;
+}
+h2{
     text-align: center;
 }
 a{
@@ -14,6 +16,9 @@ a{
     position: absolute;
     top: 15px;
     right: 30px;
+}
+#head #button a{
+    margin: 10px;
 }
 #footLeft{
     position: absolute;
