@@ -8,7 +8,7 @@
 <body>
 <h2>Connexion</h2>
 <div id="form">
-    <form:form id="formSignUp" method="POST" action="/pinthouse/connection/send" modelAttribute="currentUser">
+    <form:form id="formSignUp" method="POST" modelAttribute="currentUser">
         <form:label path="email">Adresse mail :</form:label>
         <form:input path="email"/>
         <br/>

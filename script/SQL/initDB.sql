@@ -17,46 +17,47 @@ CREATE TABLE Promotion(
 	dateEnd date NOT NULL,
 	value integer NOT NULL
 );
+ALTER TABLE Promotion AUTO_INCREMENT = 1;
 
 CREATE TABLE BeerColor(
-	nameColorEn varchar(255) NOT NULL,
-	constraint nameColorEnPK PRIMARY KEY (nameColorEn),
-	nomFr varchar(255) NOT NULL
+	nameEn varchar(255) NOT NULL,
+	constraint nameColorEnPK PRIMARY KEY (nameEn),
+	nameFr varchar(255) NOT NULL
 );
 
 CREATE TABLE BeerType(
-	typeNameEn varchar(255) NOT NULL,
-	constraint typeNameEnPK PRIMARY KEY (typeNameEn),
-	nomFr varchar(255) NOT NULL
+	nameEn varchar(255) NOT NULL,
+	constraint typeNameEnPK PRIMARY KEY (nameEn),
+	nameFr varchar(255) NOT NULL
 );
 
 CREATE TABLE Brewery(
 	nameEn varchar(255) NOT NULL,
 	constraint nameEnPK PRIMARY KEY (nameEn),
-	nomFr varchar(255) NOT NULL
+	nameFr varchar(255) NOT NULL
 );
 
 CREATE TABLE Country(
 	nameEn varchar(255) NOT NULL,
 	constraint nameEnCountryPK PRIMARY KEY (nameEn),
-	nomFr varchar(255) NOT NULL
+	nameFr varchar(255) NOT NULL
 );
 
 CREATE TABLE Beer(
 	name varchar(255) NOT NULL,
 	constraint namePK PRIMARY KEY (name),
-	description varchar(255),
-	alcoholPerc float(4,2) NOT NULL,
-	capacityCl float(4,2) NOT NULL,
-	price float(6,2) NOT NULL,
+	description varchar(500),
+	alcoholPerc float NOT NULL,
+	capacityCl float NOT NULL,
+	price float NOT NULL,
 	breweryName varchar(255) NOT NULL,
 	constraint BreweryNameFK FOREIGN KEY (breweryName) REFERENCES Brewery (nameEn),
 	countryName varchar(255) NOT NULL,
 	constraint CountryNameFK FOREIGN KEY (countryName) REFERENCES Country (nameEn),
 	beerTypeName varchar(255) NOT NULL,
-	constraint BeerTypeNameFK FOREIGN KEY (beerTypeName) REFERENCES BeerType (typeNameEn),
+	constraint BeerTypeNameFK FOREIGN KEY (beerTypeName) REFERENCES BeerType (nameEn),
 	beerColor varchar(255) NOT NULL,
-	constraint BeerColorFK FOREIGN KEY (beerColor) REFERENCES BeerColor(nameColorEn)
+	constraint BeerColorFK FOREIGN KEY (beerColor) REFERENCES BeerColor(nameEn)
 );
 
 CREATE TABLE Beer_Promotion(
@@ -68,16 +69,17 @@ CREATE TABLE Beer_Promotion(
 ); 
 
 CREATE TABLE City(
-	id integer NOT NULL,
+	id integer NOT NULL AUTO_INCREMENT,
 	constraint idPK PRIMARY KEY (id),
 	name varchar(255) NOT NULL,
 	postCode integer NOT NULL,
 	countryName varchar(255) NOT NULL,
 	constraint city_countryNameFK FOREIGN KEY (countryName) REFERENCES Country (nameEn)
 );
+ALTER TABLE City AUTO_INCREMENT = 1;
 
 CREATE TABLE User(
-	id integer NOT NULL,
+	id integer NOT NULL AUTO_INCREMENT,
 	constraint idPK PRIMARY KEY (id),
 	lastName varchar(255) NOT NULL,
 	firstName varchar(255) NOT NULL,
@@ -90,21 +92,24 @@ CREATE TABLE User(
 	cityId integer NOT NULL,
 	constraint cityIdFK FOREIGN KEY (cityId) REFERENCES City (id) 
 );
+ALTER TABLE User AUTO_INCREMENT = 1;
 
 CREATE TABLE Commande(
-	id integer NOT NULL,
+	id integer NOT NULL AUTO_INCREMENT,
 	constraint idPK PRIMARY KEY (id),
 	commandeDate date NOT NULL,
 	userId integer NOT NULL,
 	constraint userIdFK FOREIGN KEY (userId) REFERENCES User(id) 
 );
+ALTER TABLE Commande AUTO_INCREMENT = 1;
 
 CREATE TABLE CommandeLine(
-	id integer NOT NULL,
+	id integer NOT NULL AUTO_INCREMENT,
 	constraint idPK PRIMARY KEY (id),
-	realPrice float(8,2) NOT NULL,
+	realPrice float NOT NULL,
 	beerName varchar(255) NOT NULL,
 	constraint beerFK FOREIGN KEY (beerName) REFERENCES Beer (name),
 	commandeId integer NOT NULL,
 	constraint commandeIdFK FOREIGN KEY (commandeId) REFERENCES Commande (id)
 );
+ALTER TABLE CommandeLine AUTO_INCREMENT = 1;

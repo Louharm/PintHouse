@@ -10,7 +10,7 @@
 <div id="head">
     <h1><a method="POST" href="${pageContext.request.contextPath}/home">Pinthouse</a></h1>
     <div id="button">
-        <a method="POST" href="${pageContext.request.contextPath}/connection">Connexion</a>
+        <a method="POST" href="${pageContext.request.contextPath}/authenticated">Connexion</a>
         <a method="POST" href="${pageContext.request.contextPath}/inscription">Inscription</a>
         <a method="POST" href="${pageContext.request.contextPath}/cart"><img src='<spring:url value="/images/cart.png"/>' alt="langues"/></a>
     </div>
