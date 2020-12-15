@@ -38,7 +38,9 @@
         <form:input path="postCode" class="petitChamp"/>
         <br/>
         <form:label path="country">Pays :</form:label>
-        <form:input path="country"/>
+        <form:select path="country">
+            <form:options items="${countries}" itemValue="nameFr" itemLabel="nameFr"/>
+        </form:select>
         <br/>
         <form:label path="phone">Numéro de GSM</form:label>
         <form:input path="phone"/>

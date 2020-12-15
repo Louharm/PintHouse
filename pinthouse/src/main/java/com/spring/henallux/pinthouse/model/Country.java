@@ -2,11 +2,14 @@ package com.spring.henallux.pinthouse.model;
 
 public class Country {
     private String nameEn;
-    private String nomFr;
+    private String nameFr;
 
-    public Country(String nameEn, String nomFr) {
+    public Country(String nameEn, String nameFr) {
         this.nameEn = nameEn;
-        this.nomFr = nomFr;
+        this.nameFr = nameFr;
+    }
+
+    public Country() {
     }
 
     public String getNameEn() {
@@ -17,11 +20,11 @@ public class Country {
         this.nameEn = nameEn;
     }
 
-    public String getNomFr() {
-        return nomFr;
+    public String getNameFr() {
+        return nameFr;
     }
 
-    public void setNomFr(String nomFr) {
-        this.nomFr = nomFr;
+    public void setNomFr(String nameFr) {
+        this.nameFr = nameFr;
     }
 }

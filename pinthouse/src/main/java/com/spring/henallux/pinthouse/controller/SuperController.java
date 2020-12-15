@@ -18,12 +18,6 @@ public class SuperController {
         return "integrated:cart";
     }
 
-    @RequestMapping (value="/connection", method = RequestMethod.POST)
-    public String connectionButton (Model model){
-        model.addAttribute("title","Pinthouse");
-        return "integrated:connection";
-    }
-
     @RequestMapping (value="/inscription", method = RequestMethod.POST)
     public String signUpButton (Model model){
         model.addAttribute("title","Pinthouse");

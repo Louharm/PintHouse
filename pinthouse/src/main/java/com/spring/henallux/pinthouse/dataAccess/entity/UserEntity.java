@@ -11,10 +11,10 @@ public class UserEntity {
     @Column(name = "id")
     private Integer idUser;
 
-    @Column(name = "lastName")
+    @Column(name = "lastname")
     private String lastName;
 
-    @Column(name = "firstName")
+    @Column(name = "firstname")
     private String firstName;
 
     @Column(name = "password")
@@ -29,13 +29,13 @@ public class UserEntity {
     @Column(name = "street")
     private String street;
 
-    @Column(name = "numHouse")
+    @Column(name = "numhouse")
     private Integer numHouse;
 
-    @Column(name = "phoneNumber")
+    @Column(name = "phonenumber")
     private String phoneNumber;
 
-    @Column(name = "cityId")
+    @Column(name = "cityid")
     private Integer cityId;
 
     public UserEntity() {
