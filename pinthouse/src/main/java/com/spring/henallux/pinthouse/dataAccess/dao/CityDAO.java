@@ -16,9 +16,9 @@ public class CityDAO implements CityDataAccess{
     private CityRepository cityRepository;
 
     @Autowired
-    public CityDAO(CityRepository cityRepository){
+    public CityDAO(CityRepository cityRepository, ProviderConverter converter){
         this.cityRepository = cityRepository;
-        converter = new ProviderConverter();
+        this.converter = converter;
     }
 
     @Override

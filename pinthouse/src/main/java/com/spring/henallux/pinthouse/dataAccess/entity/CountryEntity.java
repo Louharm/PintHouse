@@ -11,7 +11,7 @@ public class CountryEntity {
     private String nameEn;
 
     @Column(name = "namefr")
-    private String nameFR;
+    private String nameFr;
 
     public CountryEntity() {
     }
@@ -20,7 +20,15 @@ public class CountryEntity {
         return nameEn;
     }
 
-    public String getNameFR() {
-        return nameFR;
+    public String getNameFr() {
+        return nameFr;
+    }
+
+    public void setNameEn(String nameEn) {
+        this.nameEn = nameEn;
+    }
+
+    public void setNameFr(String nameFr) {
+        this.nameFr = nameFr;
     }
 }

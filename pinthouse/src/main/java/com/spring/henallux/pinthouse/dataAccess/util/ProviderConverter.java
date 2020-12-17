@@ -18,7 +18,13 @@ public class ProviderConverter {
         return mapper.map(user,UserEntity.class);
     }
     public User userEntityToUserModel(UserEntity userEntity){
-        return mapper.map(userEntity,User.class);
+        User user = mapper.map(userEntity,User.class);
+        user.setAccountNonExpired(userEntity.getAccountNonExpired());
+        user.setAccountNonLocked(userEntity.getAccountNonLocked());
+        user.setCredentialsNonExpired(userEntity.getCredentialsNonExpired());
+        user.setEnabled(userEntity.getEnabled());
+        user.setAuthorities(userEntity.getAuthorities());
+        return user;
     }
 
     public CityEntity cityModelToCityEntity(City city){

@@ -9,8 +9,8 @@
 <h2>Connexion</h2>
 <div id="form">
     <form:form id="formSignUp" method="POST" modelAttribute="currentUser">
-        <form:label path="email">Adresse mail :</form:label>
-        <form:input path="email"/>
+        <form:label path="username">Adresse mail :</form:label>
+        <form:input path="username"/>
         <br/>
         <form:label path="password">Mot de passe :</form:label>
         <form:password path="password"/>
@@ -18,7 +18,7 @@
         <br/>
         <form:button>Se connecter</form:button>
     </form:form>
-    <a class="linkToButton" method="POST" href="${pageContext.request.contextPath}/inscription">S'inscrire</a>
+    <a href='<spring:url value="/inscription"/>' class="linkToButton">S'inscrire</a>
 </div>
 </body>
 </html>

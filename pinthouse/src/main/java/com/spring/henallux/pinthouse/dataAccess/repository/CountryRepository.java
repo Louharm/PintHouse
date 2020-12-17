@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CountryRepository extends JpaRepository<CountryEntity, String> {
-    CountryEntity findByNameFR(String name);
+    CountryEntity findByNameFr(String name);
 }

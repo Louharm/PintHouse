@@ -18,14 +18,14 @@ public class CountryDAO implements CountryDataAccess{
     private CountryRepository countryRepository;
 
     @Autowired
-    public CountryDAO(CountryRepository repository){
+    public CountryDAO(CountryRepository repository, ProviderConverter converter){
         this.countryRepository = repository;
-        converter = new ProviderConverter();
+        this.converter = converter;
     }
 
     @Override
     public Country getCountryByNameFr(String name) {
-        CountryEntity countryEntity = countryRepository.findByNameFR(name);
+        CountryEntity countryEntity = countryRepository.findByNameFr(name);
         return converter.CountryEntityToCountryModel(countryEntity);
     }
 

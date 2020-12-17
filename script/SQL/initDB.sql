@@ -81,16 +81,21 @@ ALTER TABLE City AUTO_INCREMENT = 1;
 CREATE TABLE User(
 	id integer NOT NULL AUTO_INCREMENT,
 	constraint idPK PRIMARY KEY (id),
-	lastName varchar(255) NOT NULL,
-	firstName varchar(255) NOT NULL,
+	lastname varchar(255) NOT NULL,
+	firstname varchar(255) NOT NULL,
 	password varchar(255) NOT NULL,
 	email varchar(255) NOT NULL UNIQUE,
 	birthdate date NOT NULL,
 	street varchar(255) NOT NULL,
-	numHouse integer NOT NULL,
-	phoneNumber varchar(255),
-	cityId integer NOT NULL,
-	constraint cityIdFK FOREIGN KEY (cityId) REFERENCES City (id) 
+	numhouse integer NOT NULL,
+	phonenumber varchar(255),
+	cityid integer NOT NULL,
+	constraint cityIdFK FOREIGN KEY (cityid) REFERENCES City (id) ,
+    authorities varchar(255),
+    non_expired boolean,
+    non_locked boolean,
+    credentials_non_expired boolean,
+    enabled boolean
 );
 ALTER TABLE User AUTO_INCREMENT = 1;
 

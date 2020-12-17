@@ -15,9 +15,9 @@ public class UserDAO implements UserDataAccess {
     private ProviderConverter converter;
 
     @Autowired
-    public UserDAO(UserRepository userRepository){
+    public UserDAO(UserRepository userRepository, ProviderConverter converter){
         this.userRepository = userRepository;
-        converter = new ProviderConverter();
+        this.converter = converter;
     }
 
     public void save(User user){
@@ -25,7 +25,7 @@ public class UserDAO implements UserDataAccess {
         userRepository.save(userEntity);
     }
     public User findByUsername(String username){
-        UserEntity userEntity = userRepository.findByEmailAfter(username);
+        UserEntity userEntity = userRepository.findByUsername(username);
         return converter.userEntityToUserModel(userEntity);
     }
 }

@@ -24,7 +24,7 @@ public class Country {
         return nameFr;
     }
 
-    public void setNomFr(String nameFr) {
+    public void setNameFr(String nameFr) {
         this.nameFr = nameFr;
     }
 }

@@ -9,5 +9,5 @@ public interface UserRepository extends JpaRepository<UserEntity, String> {
     @Override
     UserEntity save(UserEntity s);
 
-    UserEntity findByEmailAfter(String username);
+    UserEntity findByUsername(String username);
 }

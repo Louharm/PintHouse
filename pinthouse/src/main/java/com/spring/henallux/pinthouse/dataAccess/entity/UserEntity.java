@@ -20,8 +20,8 @@ public class UserEntity {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "email")
-    private String email;
+    @Column(name = "username")
+    private String username;
 
     @Column(name = "birthdate")
     private Date birthDate;
@@ -38,6 +38,21 @@ public class UserEntity {
     @Column(name = "cityid")
     private Integer cityId;
 
+    @Column(name = "authorities")
+    private String authorities;
+
+    @Column(name = "non_expired")
+    private Boolean accountNonExpired;
+
+    @Column(name = "non_locked")
+    private Boolean accountNonLocked;
+
+    @Column(name = "credentials_non_expired")
+    private Boolean credentialsNonExpired;
+
+    @Column(name = "enabled")
+    private Boolean enabled;
+
     public UserEntity() {
     }
 
@@ -45,79 +60,59 @@ public class UserEntity {
         return idUser;
     }
 
-    public void setIdUser(Integer idUser) {
-        this.idUser = idUser;
-    }
-
     public String getLastName() {
         return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public String getUsername() {
+        return username;
     }
 
     public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
-    }
-
     public String getStreet() {
         return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
     }
 
     public Integer getNumHouse() {
         return numHouse;
     }
 
-    public void setNumHouse(Integer numHouse) {
-        this.numHouse = numHouse;
-    }
-
     public String getPhoneNumber() {
         return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
 
     public Integer getCityId() {
         return cityId;
     }
 
-    public void setCityId(Integer cityId) {
-        this.cityId = cityId;
+    public String getAuthorities() {
+        return authorities;
+    }
+
+    public Boolean getAccountNonExpired() {
+        return accountNonExpired;
+    }
+
+    public Boolean getAccountNonLocked() {
+        return accountNonLocked;
+    }
+
+    public Boolean getCredentialsNonExpired() {
+        return credentialsNonExpired;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
     }
 }

@@ -8,11 +8,11 @@
 </head>
 <body>
 <div id="head">
-    <h1><a method="POST" href="${pageContext.request.contextPath}/home">Pinthouse</a></h1>
+    <h1><a href='<spring:url value="/home"/>'>Pinthouse</a></h1>
     <div id="button">
-        <a method="POST" href="${pageContext.request.contextPath}/authenticated">Connexion</a>
-        <a method="POST" href="${pageContext.request.contextPath}/inscription">Inscription</a>
-        <a method="POST" href="${pageContext.request.contextPath}/cart"><img src='<spring:url value="/images/cart.png"/>' alt="langues"/></a>
+        <a href='<spring:url value="/authenticated"/>'>Connexion</a>
+        <a href='<spring:url value="/inscription"/>'>Inscription</a>
+        <a href='<spring:url value="/cart"/>'><img src='<spring:url value="/images/cart.png"/>' alt="langues"/></a>
     </div>
 </div>
 <div>
@@ -20,8 +20,8 @@
 </div>
 <div id="foot">
     <div id="footLeft">
-        <a method="POST" href="${pageContext.request.contextPath}/aboutUs">About us</a>
-        <a method="POST" href="${pageContext.request.contextPath}/contact">Contact</a>
+        <a href='<spring:url value="/aboutUs"/>'>About us</a>
+        <a href='<spring:url value="/contact"/>'>Contact</a>
     </div>
     <img id="footRight" src='<spring:url value="/images/translate.png"/>' alt="langues" method="POST" action = "/pinthouse/language"/>
 </div>
