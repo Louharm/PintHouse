@@ -20,7 +20,7 @@ public class UserEntity {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "username")
+    @Column(name = "email")
     private String username;
 
     @Column(name = "birthdate")
