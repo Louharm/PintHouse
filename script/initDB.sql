@@ -85,7 +85,6 @@ CREATE TABLE User(
 	firstname varchar(255) NOT NULL,
 	password varchar(255) NOT NULL,
 	email varchar(255) NOT NULL UNIQUE,
-	birthdate date NOT NULL,
 	street varchar(255) NOT NULL,
 	numhouse integer NOT NULL,
 	phonenumber varchar(255),

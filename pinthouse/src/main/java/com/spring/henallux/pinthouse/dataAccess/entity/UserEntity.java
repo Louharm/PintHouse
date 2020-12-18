@@ -3,7 +3,7 @@ package com.spring.henallux.pinthouse.dataAccess.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.util.Date;
+import java.sql.Date;
 
 @Entity(name="user")
 public class UserEntity {
@@ -22,9 +22,6 @@ public class UserEntity {
 
     @Column(name = "email")
     private String username;
-
-    @Column(name = "birthdate")
-    private Date birthDate;
 
     @Column(name = "street")
     private String street;
@@ -76,10 +73,6 @@ public class UserEntity {
         return username;
     }
 
-    public Date getBirthDate() {
-        return birthDate;
-    }
-
     public String getStreet() {
         return street;
     }
@@ -114,5 +107,62 @@ public class UserEntity {
 
     public Boolean getEnabled() {
         return enabled;
+    }
+
+    public void setIdUser(Integer idUser) {
+        this.idUser = idUser;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public void setNumHouse(Integer numHouse) {
+        this.numHouse = numHouse;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setCityId(Integer cityId) {
+        this.cityId = cityId;
+    }
+
+    public void setAuthorities(String authorities) {
+        this.authorities = authorities;
+    }
+
+    public void setAccountNonExpired(Boolean accountNonExpired) {
+        this.accountNonExpired = accountNonExpired;
+    }
+
+    public void setAccountNonLocked(Boolean accountNonLocked) {
+        this.accountNonLocked = accountNonLocked;
+    }
+
+    public void setCredentialsNonExpired(Boolean credentialsNonExpired) {
+        this.credentialsNonExpired = credentialsNonExpired;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 }

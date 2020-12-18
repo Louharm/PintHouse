@@ -25,21 +25,19 @@ public class User implements UserDetails {
     private Boolean enabled;
 
     @NotEmpty
-    private Integer id;
+    private Integer idUser;
     @NotEmpty
-    private String lastName;
+    private String lastname;
     @NotEmpty
-    private String firstName;
+    private String firstname;
     @NotEmpty
     private String confirmPassword;
     @NotEmpty
-    private GregorianCalendar birthDate;
-    @NotEmpty
     private String street;
     @NotEmpty
-    private int numHouse;
+    private int numhouse;
     @NotEmpty
-    private String phoneNumber;
+    private String phonenumber;
     @NotEmpty
     private int cityId;
 
@@ -146,11 +144,11 @@ public class User implements UserDetails {
     }
 
     public Integer getId() {
-        return id;
+        return idUser;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(Integer idUser) {
+        this.idUser = idUser;
     }
 
     public String getLastName() {
@@ -175,14 +173,6 @@ public class User implements UserDetails {
 
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
-    }
-
-    public GregorianCalendar getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(GregorianCalendar birthDate) {
-        this.birthDate = birthDate;
     }
 
     public String getStreet() {

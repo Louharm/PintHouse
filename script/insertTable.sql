@@ -39,12 +39,12 @@ INSERT INTO country (nameFr, nameEn) VALUES ('Tchéquie','Czechia');
 
 INSERT INTO city (name, postCode, countryName) VALUES ('Barvaux', '6940', 'Belgium');
 
-INSERT INTO user (lastName, firstName, password, email, birthdate, street, numHouse, phoneNumber, cityId, authorities, non_expired, non_locked, credentials_non_expired, enabled) 
-	VALUES ('Delaive','Benjamin', '$2a$10$6CMz3BnY21aIN6eaI9K8bOBdom697QmXU6O/iSdqOFj3K.RUGQY.u', 'etu41778@henallux.be', str_to_date('1999-02-22', '%Y-%m-%f'), 'Avenue des Tilleuls',54,'+32 496/94.80.92',1,'ROLE_ADMIN',1,1,1,1);
+INSERT INTO user (lastName, firstName, password, email, street, numHouse, phoneNumber, cityId, authorities, non_expired, non_locked, credentials_non_expired, enabled) 
+	VALUES ('Delaive','Benjamin', '$2a$10$6CMz3BnY21aIN6eaI9K8bOBdom697QmXU6O/iSdqOFj3K.RUGQY.u', 'etu41778@henallux.be', 'Avenue des Tilleuls',54,'+32 496/94.80.92',1,'ROLE_ADMIN',1,1,1,1);
 -- mot de passe = password
 INSERT INTO city (name, postCode, countryName) VALUES ('Bovesse', '5081', 'Belgium');
-INSERT INTO user (lastName, firstName, password, email, birthdate, street, numHouse, phoneNumber, cityId, authorities, non_expired, non_locked, credentials_non_expired, enabled) 
-	VALUES ('Harmand Pierard','Louise', '$2a$10$l928MI5t4KVYKM2XYkGbzeHszIvhWpyl9YEJs5fKcopL8A9vDvSNO', 'etu39951@henallux.be', str_to_date('1999-12-21', '%Y-%m-%f'), 'Rue de Temploux',6,'+32 476/91.87.88',2,'ROLE_ADMIN',1,1,1,1);
+INSERT INTO user (lastName, firstName, password, email, street, numHouse, phoneNumber, cityId, authorities, non_expired, non_locked, credentials_non_expired, enabled) 
+	VALUES ('Harmand Pierard','Louise', '$2a$10$l928MI5t4KVYKM2XYkGbzeHszIvhWpyl9YEJs5fKcopL8A9vDvSNO', 'etu39951@henallux.be', 'Rue de Temploux',6,'+32 476/91.87.88',2,'ROLE_ADMIN',1,1,1,1);
 -- mot de passe = password
 
 INSERT INTO beercolor (nameEn, nameFr) VALUES ('blond','blonde');

@@ -50,7 +50,6 @@
         <form:label path="country">Pays :</form:label>
         <form:select path="country">
             <form:options items="${countries}" itemValue="nameFr" itemLabel="nameFr"/>
-            <script>console.log(${countries})</script>
         </form:select>
         <form:errors path="country"/>
         <br/>
