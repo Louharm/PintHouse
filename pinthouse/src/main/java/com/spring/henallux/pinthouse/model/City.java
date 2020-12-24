@@ -3,15 +3,16 @@ package com.spring.henallux.pinthouse.model;
 public class City {
     private Integer id;
     private String name;
-    private Integer postCode;
+    private String postCode;
     private String countryName;
 
-    public City(Integer id, String name, Integer postCode, String countryName) {
-        this.id = id;
+    public City(String name, String postCode, String countryName) {
         this.name = name;
         this.postCode = postCode;
         this.countryName = countryName;
     }
+
+    public City() {}
 
     public Integer getId() {
         return id;
@@ -29,11 +30,11 @@ public class City {
         this.name = name;
     }
 
-    public Integer getPostCode() {
+    public String getPostCode() {
         return postCode;
     }
 
-    public void setPostCode(Integer postCode) {
+    public void setPostCode(String postCode) {
         this.postCode = postCode;
     }
 

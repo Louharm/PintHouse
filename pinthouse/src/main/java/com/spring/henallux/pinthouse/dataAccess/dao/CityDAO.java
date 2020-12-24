@@ -24,7 +24,7 @@ public class CityDAO implements CityDataAccess{
     @Override
     public City getCityByNameAndCountry(String name, String country) {
         CityEntity cityEntity = cityRepository.findByCountryNameAndName(country,name);
-        return converter.cityEntityToCityModel(cityEntity);
+        return cityEntity == null ? null : converter.cityEntityToCityModel(cityEntity);
     }
 
     @Override

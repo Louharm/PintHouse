@@ -86,7 +86,7 @@ CREATE TABLE User(
 	password varchar(255) NOT NULL,
 	email varchar(255) NOT NULL UNIQUE,
 	street varchar(255) NOT NULL,
-	numhouse integer NOT NULL,
+	numhouse varchar(10) NOT NULL,
 	phonenumber varchar(255),
 	cityid integer NOT NULL,
 	constraint cityIdFK FOREIGN KEY (cityid) REFERENCES City (id) ,

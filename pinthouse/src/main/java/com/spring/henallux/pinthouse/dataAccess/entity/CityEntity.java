@@ -8,7 +8,7 @@ import javax.persistence.Id;
 public class CityEntity {
     @Id
     @Column(name = "id")
-    private Integer idCity;
+    private Integer id;
 
     @Column(name = "name")
     private String name;
@@ -20,19 +20,35 @@ public class CityEntity {
     public CityEntity() {
     }
 
-    public Integer getIdCity() {
-        return idCity;
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getPostCode() {
         return postCode;
     }
 
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
+    }
+
     public String getCountryName() {
         return countryName;
+    }
+
+    public void setCountryName(String countryName) {
+        this.countryName = countryName;
     }
 }

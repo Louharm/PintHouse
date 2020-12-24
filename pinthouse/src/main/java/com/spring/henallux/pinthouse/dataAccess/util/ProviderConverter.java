@@ -15,6 +15,12 @@ public class ProviderConverter {
     private Mapper mapper = new DozerBeanMapper();
 
     public UserEntity userModelToUserEntity(User user){
+        UserEntity userEntity = mapper.map(user,UserEntity.class);
+        userEntity.setAccountNonExpired(user.getAccountNonExpired());
+        userEntity.setAccountNonLocked(user.getAccountNonLocked());
+        userEntity.setCredentialsNonExpired(user.getCredentialsNonExpired());
+        userEntity.setEnabled(user.getEnabled());
+        userEntity.setAuthorities(user.getAuthoritiesString());
         return mapper.map(user,UserEntity.class);
     }
     public User userEntityToUserModel(UserEntity userEntity){

@@ -24,21 +24,27 @@ public class User implements UserDetails {
     private Boolean credentialsNonExpired;
     private Boolean enabled;
 
-    @NotEmpty
     private Integer idUser;
+
     @NotEmpty
-    private String lastname;
+    private String lastName;
     @NotEmpty
-    private String firstname;
+    private String firstName;
     @NotEmpty
     private String confirmPassword;
     @NotEmpty
     private String street;
     @NotEmpty
-    private int numhouse;
+    private String numHouse;
     @NotEmpty
-    private String phonenumber;
+    private String phoneNumber;
     @NotEmpty
+    private String city;
+    @NotEmpty
+    private String postCode;
+    @NotEmpty
+    private String country;
+
     private int cityId;
 
     public User(String username, String password, String authorities, Boolean accountNonExpired, Boolean accountNonLocked, Boolean credentialsNonExpired, Boolean enabled) {
@@ -51,8 +57,7 @@ public class User implements UserDetails {
         this.enabled = enabled;
     }
 
-    public User() {
-    }
+    public User() {}
 
     @Override
     public Collection<GrantedAuthority> getAuthorities() {
@@ -70,6 +75,11 @@ public class User implements UserDetails {
 
         return grantedAuthorities;
     }
+
+    public String getAuthoritiesString() {
+        return authorities;
+    }
+
     @Override
     public boolean isEnabled() {
         return enabled;
@@ -151,20 +161,20 @@ public class User implements UserDetails {
         this.idUser = idUser;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getConfirmPassword() {
@@ -183,20 +193,44 @@ public class User implements UserDetails {
         this.street = street;
     }
 
-    public int getNumhouse() {
-        return numhouse;
+    public String getNumHouse() {
+        return numHouse;
     }
 
-    public void setNumhouse(int numhouse) {
-        this.numhouse = numhouse;
+    public void setNumHouse(String numHouse) {
+        this.numHouse = numHouse;
     }
 
-    public String getPhonenumber() {
-        return phonenumber;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhonenumber(String phonenumber) {
-        this.phonenumber = phonenumber;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getPostCode() {
+        return postCode;
+    }
+
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public int getCityId() {

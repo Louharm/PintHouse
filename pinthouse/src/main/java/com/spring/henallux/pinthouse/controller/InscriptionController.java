@@ -4,6 +4,7 @@ import com.spring.henallux.pinthouse.Constants;
 import com.spring.henallux.pinthouse.dataAccess.dao.CityDataAccess;
 import com.spring.henallux.pinthouse.dataAccess.dao.CountryDataAccess;
 import com.spring.henallux.pinthouse.dataAccess.dao.UserDataAccess;
+import com.spring.henallux.pinthouse.model.City;
 import com.spring.henallux.pinthouse.model.Country;
 import com.spring.henallux.pinthouse.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,23 +42,39 @@ public class InscriptionController extends SuperController {
 
     @RequestMapping (method = RequestMethod.GET)
     public String home (Model model){
-
         model.addAttribute("countries", countries);
         model.addAttribute("title","Pinthouse");
         model.addAttribute(Constants.CURRENT_USER, new User());
         return "integrated:inscription";
     }
+
     @RequestMapping (value="/send",method = RequestMethod.POST)
     public String getFormData(Model model, @Valid @ModelAttribute(value=Constants.CURRENT_USER) User user, final BindingResult errors){
         if(!errors.hasErrors()){
             if(user.getConfirmPassword().equals(user.getPassword())){
-                //userDataAccess.save(user);
+                Country country = countryDataAccess.getCountryByNameFr(user.getCountry());
+                City city = new City(user.getCity(), user.getPostCode(), country.getNameEn());
+                City cityFound = cityDataAccess.getCityByNameAndCountry(user.getCity(), country.getNameEn());
+                if(cityFound == null){
+                    city.setId(0);
+                    cityDataAccess.save(city);
+                    cityFound = cityDataAccess.getCityByNameAndCountry(user.getCity(), country.getNameEn());
+                }
+
+                user.setAuthorities("ROLE_USER");
+                user.setAccountNonLocked(true);
+                user.setAccountNonExpired(true);
+                user.setCredentialsNonExpired(true);
+                user.setEnabled(true);
+                user.setCityId(cityFound.getId());
+                user.setIdUser(0);
+                userDataAccess.save(user);
                 return "integrated:contact";
             }
         }
         model.addAttribute("title", "Page d'inscription");
-        model.addAttribute("hobbies", countries);
-        return "integrated:userInscription";
+        model.addAttribute("countries", countries);
+        return "integrated:inscription";
     }
 
 }

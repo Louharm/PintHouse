@@ -29,10 +29,6 @@
         <form:password path="confirmPassword"/>
         <form:errors path="confirmPassword"/>
         <br/>
-        <form:label path="birthDate">Date de naissance :</form:label>
-        <form:input path="birthDate"/>
-        <form:errors path="birthDate"/>
-        <br/>
         <form:label path="street">Rue :</form:label>
         <form:input path="street"/>
         <form:errors path="street"/>
@@ -53,9 +49,9 @@
         </form:select>
         <form:errors path="country"/>
         <br/>
-        <form:label path="phone">Numéro de GSM</form:label>
-        <form:input path="phone"/>
-        <form:errors path="phone"/>
+        <form:label path="phoneNumber">Numéro de GSM</form:label>
+        <form:input path="phoneNumber"/>
+        <form:errors path="phoneNumber"/>
         <br/>
         <form:button>S'inscrire</form:button>
     </form:form>

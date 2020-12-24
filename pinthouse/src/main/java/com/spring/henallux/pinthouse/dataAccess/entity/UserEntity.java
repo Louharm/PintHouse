@@ -3,7 +3,6 @@ package com.spring.henallux.pinthouse.dataAccess.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.sql.Date;
 
 @Entity(name="user")
 public class UserEntity {
@@ -27,7 +26,7 @@ public class UserEntity {
     private String street;
 
     @Column(name = "numhouse")
-    private Integer numHouse;
+    private String numHouse;
 
     @Column(name = "phonenumber")
     private String phoneNumber;
@@ -77,7 +76,7 @@ public class UserEntity {
         return street;
     }
 
-    public Integer getNumHouse() {
+    public String getNumHouse() {
         return numHouse;
     }
 
@@ -129,12 +128,11 @@ public class UserEntity {
         this.username = username;
     }
 
-
     public void setStreet(String street) {
         this.street = street;
     }
 
-    public void setNumHouse(Integer numHouse) {
+    public void setNumHouse(String numHouse) {
         this.numHouse = numHouse;
     }
 
