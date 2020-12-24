@@ -9,13 +9,13 @@
 <h2>Inscription</h2>
 <div id="form">
     <form:form id="formSignUp" method="POST" action="/pinthouse/inscription/send" modelAttribute="currentUser">
-        <form:label path="lastName">Nom de famille :</form:label>
-        <form:input path="lastName"/>
-        <form:errors path="lastName"/>
+        <form:label path="lastname">Nom de famille :</form:label>
+        <form:input path="lastname"/>
+        <form:errors path="lastname"/>
         <br/>
-        <form:label path="firstName">Prénom :</form:label>
-        <form:input path="firstName"/>
-        <form:errors path="firstName"/>
+        <form:label path="firstname">Prénom :</form:label>
+        <form:input path="firstname"/>
+        <form:errors path="firstname"/>
         <br/>
         <form:label path="username">Adresse mail :</form:label>
         <form:input path="username"/>
@@ -29,16 +29,12 @@
         <form:password path="confirmPassword"/>
         <form:errors path="confirmPassword"/>
         <br/>
-        <form:label path="birthDate">Date de naissance :</form:label>
-        <form:input path="birthDate"/>
-        <form:errors path="birthDate"/>
-        <br/>
         <form:label path="street">Rue :</form:label>
         <form:input path="street"/>
         <form:errors path="street"/>
-        <form:label path="numHouse">Numéro :</form:label>
-        <form:input path="numHouse" class="petitChamp"/>
-        <form:errors path="numHouse"/>
+        <form:label path="numhouse">Numéro :</form:label>
+        <form:input path="numhouse" class="petitChamp"/>
+        <form:errors path="numhouse"/>
         <br/>
         <form:label path="city">Ville :</form:label>
         <form:input path="city"/>
@@ -53,9 +49,9 @@
         </form:select>
         <form:errors path="country"/>
         <br/>
-        <form:label path="phone">Numéro de GSM</form:label>
-        <form:input path="phone"/>
-        <form:errors path="phone"/>
+        <form:label path="phonenumber">Numéro de GSM</form:label>
+        <form:input path="phonenumber"/>
+        <form:errors path="phonenumber"/>
         <br/>
         <form:button>S'inscrire</form:button>
     </form:form>

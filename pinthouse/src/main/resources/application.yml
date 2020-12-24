@@ -4,6 +4,6 @@ server:
     contextPath: /pinthouse
 spring:
   datasource:
-    password: "#Btrlh211299"
+    password: "premier"
     url: jdbc:mysql://localhost:3306/pinthouse_db?user=root&serverTimezone=UTC
     driverClassName: com.mysql.cj.jdbc.Driver

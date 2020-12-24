@@ -57,7 +57,7 @@ public class InscriptionController extends SuperController {
         }
         model.addAttribute("title", "Page d'inscription");
         model.addAttribute("hobbies", countries);
-        return "integrated:userInscription";
+        return "integrated:inscription";
     }
 
 }

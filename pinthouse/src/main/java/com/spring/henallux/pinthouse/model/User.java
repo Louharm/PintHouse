@@ -24,7 +24,6 @@ public class User implements UserDetails {
     private Boolean credentialsNonExpired;
     private Boolean enabled;
 
-    @NotEmpty
     private Integer idUser;
     @NotEmpty
     private String lastname;
@@ -35,10 +34,15 @@ public class User implements UserDetails {
     @NotEmpty
     private String street;
     @NotEmpty
-    private int numhouse;
+    private String numhouse;
     @NotEmpty
     private String phonenumber;
     @NotEmpty
+    private String city;
+    @NotEmpty
+    private String postCode;
+    @NotEmpty
+    private String country;
     private int cityId;
 
     public User(String username, String password, String authorities, Boolean accountNonExpired, Boolean accountNonLocked, Boolean credentialsNonExpired, Boolean enabled) {
@@ -183,11 +187,11 @@ public class User implements UserDetails {
         this.street = street;
     }
 
-    public int getNumhouse() {
+    public String getNumhouse() {
         return numhouse;
     }
 
-    public void setNumhouse(int numhouse) {
+    public void setNumhouse(String numhouse) {
         this.numhouse = numhouse;
     }
 
@@ -205,5 +209,29 @@ public class User implements UserDetails {
 
     public void setCityId(int cityId) {
         this.cityId = cityId;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getPostCode() {
+        return postCode;
+    }
+
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 }
