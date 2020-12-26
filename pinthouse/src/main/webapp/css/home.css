@@ -44,3 +44,6 @@
     margin:0 auto;
     width:840px;
 }
+#list{
+    float: left;
+}

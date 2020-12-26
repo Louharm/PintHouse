@@ -2,7 +2,6 @@ package com.spring.henallux.pinthouse.dataAccess.dao;
 
 import com.spring.henallux.pinthouse.dataAccess.entity.CityEntity;
 import com.spring.henallux.pinthouse.dataAccess.repository.CityRepository;
-import com.spring.henallux.pinthouse.dataAccess.repository.UserRepository;
 import com.spring.henallux.pinthouse.dataAccess.util.ProviderConverter;
 import com.spring.henallux.pinthouse.model.City;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +23,12 @@ public class CityDAO implements CityDataAccess{
     @Override
     public City getCityByNameAndCountry(String name, String country) {
         CityEntity cityEntity = cityRepository.findByCountryNameAndName(country,name);
-        return cityEntity == null ? null : converter.cityEntityToCityModel(cityEntity);
+        return cityEntity == null ? null : converter.cityEntityToModel(cityEntity);
     }
 
     @Override
     public void save(City city) {
-        CityEntity cityEntity = converter.cityModelToCityEntity(city);
+        CityEntity cityEntity = converter.cityModelToEntity(city);
         cityRepository.save(cityEntity);
     }
 }

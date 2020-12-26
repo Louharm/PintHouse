@@ -16,6 +16,16 @@
             </div>
         </ul>
     </div>
-    liste des bières
+    <div id="list">
+        <ul>
+            <c:forEach items="${list}" var="elem">
+                <li>${elem.nameFr}</li>
+            </c:forEach>
+        </ul>
+    </div>
+    <div>
+        <p>hey</p>
+        <p>lol</p>
+    </div>
 </body>
 </html>

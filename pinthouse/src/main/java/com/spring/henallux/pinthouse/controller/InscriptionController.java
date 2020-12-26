@@ -8,6 +8,7 @@ import com.spring.henallux.pinthouse.model.City;
 import com.spring.henallux.pinthouse.model.Country;
 import com.spring.henallux.pinthouse.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 
 @Controller
@@ -68,8 +70,9 @@ public class InscriptionController extends SuperController {
                 user.setEnabled(true);
                 user.setCityId(cityFound.getId());
                 user.setIdUser(0);
+                user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
                 userDataAccess.save(user);
-                return "integrated:contact";
+                return "integrated:authenticated";
             }
         }
         model.addAttribute("title", "Page d'inscription");

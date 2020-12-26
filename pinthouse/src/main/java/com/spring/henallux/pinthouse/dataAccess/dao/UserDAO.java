@@ -21,11 +21,11 @@ public class UserDAO implements UserDataAccess {
     }
 
     public void save(User user){
-        UserEntity userEntity = converter.userModelToUserEntity(user);
+        UserEntity userEntity = converter.userModelToEntity(user);
         userRepository.save(userEntity);
     }
     public User findByUsername(String username){
         UserEntity userEntity = userRepository.findByUsername(username);
-        return converter.userEntityToUserModel(userEntity);
+        return converter.userEntityToModel(userEntity);
     }
 }

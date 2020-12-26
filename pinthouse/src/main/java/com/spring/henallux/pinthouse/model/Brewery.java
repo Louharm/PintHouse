@@ -4,9 +4,7 @@ public class Brewery {
     private String nameEn;
     private String nomFr;
 
-    public Brewery(String nameEn, String nameFr) {
-        this.nameEn = nameEn;
-        this.nomFr = nameFr;
+    public Brewery() {
     }
 
     public String getNameEn() {
