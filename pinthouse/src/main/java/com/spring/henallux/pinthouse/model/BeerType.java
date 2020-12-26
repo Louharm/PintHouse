@@ -4,9 +4,7 @@ public class BeerType {
     private String typeNameEn;
     private String nomFr;
 
-    public BeerType(String typeNameEn, String nomFr) {
-        this.typeNameEn = typeNameEn;
-        this.nomFr = nomFr;
+    public BeerType() {
     }
 
     public String getTypeNameEn() {

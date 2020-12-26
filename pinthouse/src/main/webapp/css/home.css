@@ -47,3 +47,6 @@
 #list{
     float: left;
 }
+li{
+    list-style: none;
+}

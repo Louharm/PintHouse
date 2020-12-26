@@ -4,9 +4,7 @@ public class BeerColor {
     private String nameColorEn;
     private String nomFr;
 
-    public BeerColor(String nameColorEn, String nomFr) {
-        this.nameColorEn = nameColorEn;
-        this.nomFr = nomFr;
+    public BeerColor() {
     }
 
     public String getNameColorEn() {
