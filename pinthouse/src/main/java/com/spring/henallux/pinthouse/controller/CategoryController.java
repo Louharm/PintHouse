@@ -31,24 +31,31 @@ public class CategoryController extends SuperController {
     }
 
     @RequestMapping (method = RequestMethod.GET)
-    public String home (Model model,@RequestParam(value="name") final String name){
+    public String home (Model model,@RequestParam() final String name,@RequestParam(required = false) final String elemCategory){
+        model.addAttribute("category",name);
         model.addAttribute("title","Pinthouse");
-        ArrayList list = new ArrayList();
+        ArrayList listElemCategory = new ArrayList();
         switch(name){
             case "country":
-                list = countryDataAccess.getAllCountries();
+                listElemCategory = countryDataAccess.getAllCountries();
                 break;
             case "brewery":
-                list = breweryDataAccess.getAllBrewery();
+                listElemCategory = breweryDataAccess.getAllBrewery();
                 break;
             case "beerType":
-                list = beerTypeDataAccess.getAllBeerType();
+                listElemCategory = beerTypeDataAccess.getAllBeerType();
                 break;
             case "beerColor":
-                list = beerColorDataAccess.getAllBeerColor();
+                listElemCategory = beerColorDataAccess.getAllBeerColor();
                 break;
         }
-        model.addAttribute("list",list);
+        if(elemCategory != null){
+            //mettre toutes les bières
+        }else{
+            //mettre les bières en fonction de ce qu'il y a
+        }
+        model.addAttribute("listElemCategory",listElemCategory);
+
         return "integrated:category";
     }
 }

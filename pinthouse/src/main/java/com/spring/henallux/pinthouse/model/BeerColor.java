@@ -2,7 +2,7 @@ package com.spring.henallux.pinthouse.model;
 
 public class BeerColor {
     private String nameColorEn;
-    private String nomFr;
+    private String nameFr;
 
     public BeerColor() {
     }
@@ -15,11 +15,11 @@ public class BeerColor {
         this.nameColorEn = nameColorEn;
     }
 
-    public String getNomFr() {
-        return nomFr;
+    public String getNameFr() {
+        return nameFr;
     }
 
-    public void setNomFr(String nomFr) {
-        this.nomFr = nomFr;
+    public void setNameFr(String nameFr) {
+        this.nameFr = nameFr;
     }
 }

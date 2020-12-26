@@ -4,6 +4,7 @@
 <html>
 <head>
     <link type="text/css" href="<spring:url value='/css/home.css'/>" rel="stylesheet">
+    <link type="text/css" href="<spring:url value='/css/category.css'/>" rel="stylesheet">
 </head>
 <body>
     <div id="menu">
@@ -18,8 +19,8 @@
     </div>
     <div id="list">
         <ul>
-            <c:forEach items="${list}" var="elem">
-                <li>${elem.nameFr}</li>
+            <c:forEach items="${listElemCategory}" var="elem">
+                <li><a href='<spring:url value="/category?name=${category}&elemCategory=${elem.nameEn}"/>'>${elem.nameFr}</a></li>
             </c:forEach>
         </ul>
     </div>
