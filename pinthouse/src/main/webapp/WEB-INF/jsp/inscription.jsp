@@ -49,7 +49,7 @@
         </form:select>
         <form:errors path="country"/>
         <br/>
-        <form:label path="phoneNumber">Numéro de GSM</form:label>
+        <form:label path="phoneNumber">Numéro de GSM (format : +00 000/00.00.00)</form:label>
         <form:input path="phoneNumber"/>
         <form:errors path="phoneNumber"/>
         <br/>

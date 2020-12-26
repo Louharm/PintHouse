@@ -26,7 +26,7 @@ public class CountryDAO implements CountryDataAccess{
     @Override
     public Country getCountryByNameFr(String name) {
         CountryEntity countryEntity = countryRepository.findByNameFr(name);
-        return converter.CountryEntityToCountryModel(countryEntity);
+        return converter.CountryEntityToModel(countryEntity);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class CountryDAO implements CountryDataAccess{
         List<CountryEntity> countryEntities = countryRepository.findAll();
         ArrayList<Country> list = new ArrayList<>();
         for(CountryEntity countryEntity : countryEntities){
-            list.add(converter.CountryEntityToCountryModel(countryEntity));
+            list.add(converter.CountryEntityToModel(countryEntity));
         }
         return list;
     }

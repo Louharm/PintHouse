@@ -5,6 +5,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.GregorianCalendar;
@@ -14,6 +15,7 @@ import static org.springframework.util.StringUtils.isEmpty;
 
 public class User implements UserDetails {
     @NotEmpty
+    @Pattern(regexp=".*@.*\\..*",message="doit être une adresse mail")
     private String username;
     @NotEmpty
     private String password;
@@ -27,18 +29,23 @@ public class User implements UserDetails {
     private Integer idUser;
 
     @NotEmpty
+    @Pattern(regexp="[^0-9]*",message="ne doit avoir que des lettres")
     private String lastName;
     @NotEmpty
+    @Pattern(regexp="[^0-9]*",message="ne doit avoir que des lettres")
     private String firstName;
     @NotEmpty
     private String confirmPassword;
     @NotEmpty
+    @Pattern(regexp="[^0-9]*",message="ne doit avoir que des lettres")
     private String street;
     @NotEmpty
     private String numHouse;
     @NotEmpty
+    @Pattern(regexp="\\+\\d{2} \\d{3}/\\d{2}\\.\\d{2}\\.\\d{2}",message="ne doit être que du style indiqué")
     private String phoneNumber;
     @NotEmpty
+    @Pattern(regexp="[^0-9]*",message="ne doit avoir que des lettres")
     private String city;
     @NotEmpty
     private String postCode;
@@ -207,30 +214,6 @@ public class User implements UserDetails {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getPostCode() {
-        return postCode;
-    }
-
-    public void setPostCode(String postCode) {
-        this.postCode = postCode;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
     }
 
     public int getCityId() {

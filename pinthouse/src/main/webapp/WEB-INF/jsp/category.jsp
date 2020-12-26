@@ -16,15 +16,16 @@
             </div>
         </ul>
     </div>
-
-    <div class="inStore">
-        <c:forEach items="${beersList}" var="beer">
-            <div class="beer">
-                <img src="" alt="Image de biere">
-                <h3>${beer.name}</h3>
-            </div>
-        </c:forEach>
+    <div id="list">
+        <ul>
+            <c:forEach items="${list}" var="elem">
+                <li>${elem.nameFr}</li>
+            </c:forEach>
+        </ul>
     </div>
-    liste des bières
+    <div>
+        <p>hey</p>
+        <p>lol</p>
+    </div>
 </body>
 </html>
