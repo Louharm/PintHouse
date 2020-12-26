@@ -1,6 +1,8 @@
 package com.spring.henallux.pinthouse.controller;
 
+import com.spring.henallux.pinthouse.dataAccess.dao.BeerDataAccess;
 import com.spring.henallux.pinthouse.dataAccess.dao.CountryDataAccess;
+import com.spring.henallux.pinthouse.model.Beer;
 import com.spring.henallux.pinthouse.model.Country;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,17 +16,21 @@ import java.util.ArrayList;
 @RequestMapping(value="/home")
 public class HomeController extends SuperController {
     private CountryDataAccess countryDataAccess;
+    private BeerDataAccess beerDataAccess;
 
     @Autowired
-    public HomeController(CountryDataAccess countryDataAccess){
+    public HomeController(CountryDataAccess countryDataAccess, BeerDataAccess beerDataAccess){
         this.countryDataAccess = countryDataAccess;
+        this.beerDataAccess = beerDataAccess;
     }
 
     @RequestMapping (method = RequestMethod.GET)
     public String home (Model model){
         ArrayList<Country> countries = countryDataAccess.getAllCountries();
+        ArrayList<Beer> beers = beerDataAccess.getAllBeers();
         model.addAttribute("countryList",countries);
         model.addAttribute("title","Pinthouse");
+        model.addAttribute("beersList", beers);
         return "integrated:home";
     }
 

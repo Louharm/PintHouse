@@ -1,8 +1,10 @@
 package com.spring.henallux.pinthouse.dataAccess.util;
 
+import com.spring.henallux.pinthouse.dataAccess.entity.BeerEntity;
 import com.spring.henallux.pinthouse.dataAccess.entity.CityEntity;
 import com.spring.henallux.pinthouse.dataAccess.entity.CountryEntity;
 import com.spring.henallux.pinthouse.dataAccess.entity.UserEntity;
+import com.spring.henallux.pinthouse.model.Beer;
 import com.spring.henallux.pinthouse.model.City;
 import com.spring.henallux.pinthouse.model.Country;
 import com.spring.henallux.pinthouse.model.User;
@@ -42,5 +44,9 @@ public class ProviderConverter {
 
     public Country CountryEntityToCountryModel(CountryEntity countryEntity){
         return mapper.map(countryEntity,Country.class);
+    }
+
+    public Beer BeerEntityToBeerModel(BeerEntity beerEntity){
+        return mapper.map(beerEntity, Beer.class);
     }
 }

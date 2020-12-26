@@ -23,6 +23,10 @@ public class Beer {
         this.beerColor = beerColor;
     }
 
+    public Beer(){
+
+    }
+
     public String getName() {
         return name;
     }
