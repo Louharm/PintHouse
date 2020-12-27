@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BeerRepository extends JpaRepository<BeerEntity, String> {
-    //BeerEntity getAllBeers();
+   //BeerEntity getAllBeers();
 }

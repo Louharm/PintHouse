@@ -47,3 +47,16 @@
 #list{
     float: left;
 }
+
+.AllBeersInStore {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+}
+
+.beerDisplay {
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    margin : 5px;
+    text-align: center;
+}
