@@ -1,18 +1,18 @@
 package com.spring.henallux.pinthouse.model;
 
 public class BeerType {
-    private String typeNameEn;
+    private String nameEn;
     private String nameFr;
 
     public BeerType() {
     }
 
-    public String getTypeNameEn() {
-        return typeNameEn;
+    public String getNameEn() {
+        return nameEn;
     }
 
-    public void setTypeNameEn(String typeNameEn) {
-        this.typeNameEn = typeNameEn;
+    public void setNameEn(String nameEn) {
+        this.nameEn = nameEn;
     }
 
     public String getNameFr() {
