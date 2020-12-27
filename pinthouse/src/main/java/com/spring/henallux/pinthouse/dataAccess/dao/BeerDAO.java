@@ -32,4 +32,32 @@ public class BeerDAO implements BeerDataAccess {
         }
         return list;
     }
+
+    @Override
+    public ArrayList<Beer> getAllBeersByCategory(String categoryName, String elem) {
+        List<BeerEntity> beerEntities;
+        categoryName = categoryName.toLowerCase();
+        switch (categoryName){
+            case "country" :
+                beerEntities = beerRepository.getAllByCountryName(elem);
+                break;
+            case "brewery" :
+                beerEntities = beerRepository.getAllByBreweryName(elem);
+                break;
+            case "beercolor" :
+                beerEntities = beerRepository.getAllByBeerColor(elem);
+                break;
+            case "beertype" :
+                beerEntities = beerRepository.getAllByBeerTypeName(elem);
+                break;
+            default:
+                beerEntities = null;
+        }
+
+        ArrayList<Beer> list = new ArrayList<>();
+        for(BeerEntity beerEntity : beerEntities){
+            list.add(converter.BeerEntityToBeerModel(beerEntity));
+        }
+        return list;
+    }
 }
