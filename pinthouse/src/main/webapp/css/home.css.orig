@@ -2,7 +2,6 @@
     margin-bottom: 30px;
     height:30px;
     background-color: lemonchiffon;
-    color: olive;
 }
 #menu ul {
     padding: 0;
@@ -14,7 +13,6 @@
 #menu li {
     float: left;
     margin:5px;
-    background-color: lemonchiffon;
 }
 #menu a {
     display:block;
@@ -43,6 +41,7 @@
 #category{
     margin:0 auto;
     width:840px;
+<<<<<<< HEAD
 }
 #list{
     float: left;
@@ -59,4 +58,6 @@
     padding: 20px;
     margin : 5px;
     text-align: center;
+=======
+>>>>>>> ffc473c8359d3fcf9386096d05aa4c4e04234d3a
 }

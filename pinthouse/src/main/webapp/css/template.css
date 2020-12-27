@@ -20,12 +20,12 @@ a{
 #head #button a{
     margin: 10px;
 }
-#footLeft{
-    position: absolute;
+#foot{
+    position: fixed;
     bottom: 15px;
 }
 #footRight{
-    position: absolute;
+    position: fixed;
     bottom: 15px;
     right: 30px;
 }

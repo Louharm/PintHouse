@@ -2,11 +2,9 @@ package com.spring.henallux.pinthouse.model;
 
 public class BeerType {
     private String typeNameEn;
-    private String nomFr;
+    private String nameFr;
 
-    public BeerType(String typeNameEn, String nomFr) {
-        this.typeNameEn = typeNameEn;
-        this.nomFr = nomFr;
+    public BeerType() {
     }
 
     public String getTypeNameEn() {
@@ -17,11 +15,11 @@ public class BeerType {
         this.typeNameEn = typeNameEn;
     }
 
-    public String getNomFr() {
-        return nomFr;
+    public String getNameFr() {
+        return nameFr;
     }
 
-    public void setNomFr(String nomFr) {
-        this.nomFr = nomFr;
+    public void setNameFr(String nameFr) {
+        this.nameFr = nameFr;
     }
 }
