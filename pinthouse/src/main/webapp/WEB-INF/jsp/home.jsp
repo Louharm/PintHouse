@@ -16,6 +16,14 @@
             </div>
         </ul>
     </div>
-    liste des bières
+
+    <div class="AllBeersInStore">
+            <c:forEach items="${beersList}" var="elem">
+                <div class="beerDisplay">
+                    <h4>${elem.name}</h4>
+                    <img src="" alt="Image de biere">
+                </div>
+            </c:forEach>
+    </div>
 </body>
 </html>

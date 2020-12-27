@@ -1,30 +1,37 @@
-package com.spring.henallux.pinthouse.model;
+package com.spring.henallux.pinthouse.dataAccess.entity;
 
-public class Beer {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity(name="beer")
+public class BeerEntity {
+    @Id
+    @Column(name= "name")
     private String name;
+
+    @Column(name="description")
     private String description;
+
+    @Column(name="alcoholperc")
     private Double alcoholPerc;
-    private Double capacityCl;
+
+    @Column(name="price")
     private Double price;
+
+    @Column(name = "breweryname")
     private String breweryName;
+
+    @Column(name = "countryname")
     private String countryName;
+
+    @Column(name = "beertypename")
     private String beerTypeName;
+
+    @Column(name = "beercolor")
     private String beerColor;
 
-    public Beer(String name, String description, Double alcoholPerc, Double capacityCl, Double price, String breweryName, String countryName, String beerTypeName, String beerColor) {
-        this.name = name;
-        this.description = description;
-        this.alcoholPerc = alcoholPerc;
-        this.capacityCl = capacityCl;
-        this.price = price;
-        this.breweryName = breweryName;
-        this.countryName = countryName;
-        this.beerTypeName = beerTypeName;
-        this.beerColor = beerColor;
-    }
-
-    public Beer(){
-
+    public BeerEntity() {
     }
 
     public String getName() {
@@ -49,14 +56,6 @@ public class Beer {
 
     public void setAlcoholPerc(Double alcoholPerc) {
         this.alcoholPerc = alcoholPerc;
-    }
-
-    public Double getCapacityCl() {
-        return capacityCl;
-    }
-
-    public void setCapacityCl(Double capacityCl) {
-        this.capacityCl = capacityCl;
     }
 
     public Double getPrice() {

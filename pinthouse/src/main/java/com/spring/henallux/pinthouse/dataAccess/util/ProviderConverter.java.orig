@@ -1,11 +1,18 @@
 package com.spring.henallux.pinthouse.dataAccess.util;
 
-import com.spring.henallux.pinthouse.dataAccess.entity.*;
-import com.spring.henallux.pinthouse.model.*;
+<<<<<<< HEAD
+import com.spring.henallux.pinthouse.dataAccess.entity.BeerEntity;
+import com.spring.henallux.pinthouse.dataAccess.entity.CityEntity;
+import com.spring.henallux.pinthouse.dataAccess.entity.CountryEntity;
+import com.spring.henallux.pinthouse.dataAccess.entity.UserEntity;
 import com.spring.henallux.pinthouse.model.Beer;
 import com.spring.henallux.pinthouse.model.City;
 import com.spring.henallux.pinthouse.model.Country;
 import com.spring.henallux.pinthouse.model.User;
+=======
+import com.spring.henallux.pinthouse.dataAccess.entity.*;
+import com.spring.henallux.pinthouse.model.*;
+>>>>>>> aa5e5448d4dfe226745af51497350cd88df50eeb
 import org.dozer.Mapper;
 import org.dozer.DozerBeanMapper;
 import org.springframework.stereotype.Component;
