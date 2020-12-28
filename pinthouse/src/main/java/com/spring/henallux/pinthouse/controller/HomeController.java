@@ -35,5 +35,11 @@ public class HomeController extends SuperController {
         return "integrated:home";
     }
 
+    @RequestMapping (value ="/beerDetails", method = RequestMethod.POST)
+    public String beerDetailsLink (Model model){
+        model.addAttribute("title","Pinthouse");
+        return "integrated:beerDetails";
+    }
+
 
 }
