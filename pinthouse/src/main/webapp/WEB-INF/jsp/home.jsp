@@ -22,6 +22,12 @@
                 <div class="beerDisplay">
                     <h4>${elem.name}</h4>
                     <img src="" alt="Image de biere">
+                    <p>${elem.breweryName}</p>
+                    <p>${elem.beerTypeName}</p>
+                    <p>${elem.countryName}</p>
+                    <p>${elem.beerColor}</p>
+                    <p>${elem.alcoholPerc}%</p>
+                    <p id="priceTag">${elem.price}€</p>
                 </div>
             </c:forEach>
     </div>

@@ -1,9 +1,7 @@
 package com.spring.henallux.pinthouse.controller;
 
-import com.spring.henallux.pinthouse.dataAccess.dao.BeerColorDataAccess;
-import com.spring.henallux.pinthouse.dataAccess.dao.BeerTypeDataAccess;
-import com.spring.henallux.pinthouse.dataAccess.dao.BreweryDataAccess;
-import com.spring.henallux.pinthouse.dataAccess.dao.CountryDataAccess;
+import com.spring.henallux.pinthouse.dataAccess.dao.*;
+import com.spring.henallux.pinthouse.model.Beer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,13 +19,15 @@ public class CategoryController extends SuperController {
     private BeerColorDataAccess beerColorDataAccess;
     private BeerTypeDataAccess beerTypeDataAccess;
     private BreweryDataAccess breweryDataAccess;
+    private BeerDataAccess beerDataAccess;
 
     @Autowired
-    public CategoryController(CountryDataAccess countryDataAccess, BeerColorDataAccess beerColorDataAccess, BeerTypeDataAccess beerTypeDataAccess, BreweryDataAccess breweryDataAccess){
+    public CategoryController(CountryDataAccess countryDataAccess, BeerColorDataAccess beerColorDataAccess, BeerTypeDataAccess beerTypeDataAccess, BreweryDataAccess breweryDataAccess, BeerDataAccess beerDataAccess){
         this.countryDataAccess = countryDataAccess;
         this.beerColorDataAccess = beerColorDataAccess;
         this.beerTypeDataAccess = beerTypeDataAccess;
         this.breweryDataAccess = breweryDataAccess;
+        this.beerDataAccess = beerDataAccess;
     }
 
     @RequestMapping (method = RequestMethod.GET)
@@ -50,9 +50,11 @@ public class CategoryController extends SuperController {
                 break;
         }
         if(elemCategory != null){
-            //mettre toutes les bières
+            ArrayList<Beer> beers = beerDataAccess.getAllBeersByCategory(name, elemCategory);
+            model.addAttribute("beersList", beers);
         }else{
-            //mettre les bières en fonction de ce qu'il y a
+            ArrayList<Beer> beers = beerDataAccess.getAllBeers();
+            model.addAttribute("beersList", beers);
         }
         model.addAttribute("listElemCategory",listElemCategory);
 
