@@ -4,7 +4,6 @@
 <head>
 </head>
 <body>
-    <p>c'est une page accessible à seulement qques élus ;)</p>
-    <p>Bravo ${pageContext.request.userPrincipal.principal.firstname}</p>
+    <p>Merci de t'être connecté/inscrit à ce site ${pageContext.request.userPrincipal.principal.firstName}</p>
 </body>
 </html>
