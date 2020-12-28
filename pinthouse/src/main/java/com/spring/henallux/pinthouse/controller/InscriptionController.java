@@ -72,7 +72,7 @@ public class InscriptionController extends SuperController {
                 user.setIdUser(0);
                 user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
                 userDataAccess.save(user);
-                return "integrated:authenticated";
+                return "redirect:/authenticated";
             }
         }
         model.addAttribute("title", "Page d'inscription");

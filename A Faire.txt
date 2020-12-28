@@ -9,10 +9,10 @@ Android :
 	Faire profil (Benji)
 
 JAVA WEB :
-	terminer inscription (Louise) fini
-	page quand on s'est connecté (Louise)
-	Afficher les 4 catégories (Louise) fini
-	faire les listes sur le côté (Louise)fini
+	fini - terminer inscription (Louise)
+	fini - page quand on s'est connecté (Louise)
+	fini - Afficher les 4 catégories (Louise)
+	fini - faire les listes sur le côté (Louise)
 	faire la liste de toutes les bières dans le home (Benji)
 	faire une page spécifique à une bière (Benji)
 	faire le panier (Benji)

@@ -10,8 +10,14 @@
 <div id="head">
     <h1><a href='<spring:url value="/home"/>'>Pinthouse</a></h1>
     <div id="button">
-        <a href='<spring:url value="/authenticated"/>'>Connexion</a>
-        <a href='<spring:url value="/inscription"/>'>Inscription</a>
+        <sec:authorize access="!isAuthenticated()">
+            <a href='<spring:url value="/authenticated"/>'>Connexion</a>
+            <a href='<spring:url value="/inscription"/>'>Inscription</a>
+        </sec:authorize>
+        <sec:authorize access="isAuthenticated()">
+            <a href='<spring:url value="/logout"/>'>Déconnexion</a>
+            Bonjour, ${pageContext.request.userPrincipal.principal.firstName}
+        </sec:authorize>
         <a href='<spring:url value="/cart"/>'><img src='<spring:url value="/images/cart.png"/>' alt="langues"/></a>
     </div>
 </div>
