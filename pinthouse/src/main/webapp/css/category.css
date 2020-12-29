@@ -16,19 +16,8 @@ li{
     margin-top: 5px;
     padding: 5px;
 }
-#list a{
+#list button{
     color:olive;
+    border: none;
+    background-color: lemonchiffon;
  }
-
-.AllBeersInStore {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    padding: 10px;
-}
-
-.beerDisplay {
-    border: 1px solid rgba(0, 0, 0, 0.8);
-    padding: 20px;
-    margin : 5px;
-    text-align: center;
-}

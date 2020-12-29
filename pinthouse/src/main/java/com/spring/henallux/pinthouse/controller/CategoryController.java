@@ -5,15 +5,13 @@ import com.spring.henallux.pinthouse.model.Beer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
 
 @Controller
-@RequestMapping(value="/category")
+@RequestMapping(value={"/category/","/category/{name}","category/{name}/{elemCategory}"})
 public class CategoryController extends SuperController {
     private CountryDataAccess countryDataAccess;
     private BeerColorDataAccess beerColorDataAccess;
@@ -31,7 +29,7 @@ public class CategoryController extends SuperController {
     }
 
     @RequestMapping (method = RequestMethod.GET)
-    public String home (Model model,@RequestParam() final String name,@RequestParam(required = false) final String elemCategory){
+    public String home (Model model, @PathVariable() final String name, @PathVariable(required = false) final String elemCategory){
         model.addAttribute("category",name);
         model.addAttribute("title","Pinthouse");
         ArrayList listElemCategory = new ArrayList();

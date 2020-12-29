@@ -9,10 +9,10 @@
     <div id="menu">
         <ul>
             <div id="category">
-                <li><a href='<spring:url value="/category?name=country"/>'>Pays</a></li>
-                <li><a href='<spring:url value="/category?name=brewery"/>'>Brasserie</a></li>
-                <li><a href='<spring:url value="/category?name=beerType"/>'>Type de bière</a></li>
-                <li><a href='<spring:url value="/category?name=beerColor"/>'>Couleur de bière</a></li>
+                <li><button onclick="window.location.href ='<c:url value="/category/country"/>'">Pays</button></li>
+                <li><button onclick="window.location.href ='<c:url value="/category/brewery"/>'">Brasserie</button></li>
+                <li><button onclick="window.location.href ='<c:url value="/category/beerType"/>'">Type de bière</button></li>
+                <li><button onclick="window.location.href ='<c:url value="/category/beerColor"/>'">Couleur de bière</button></li>
             </div>
         </ul>
     </div>
