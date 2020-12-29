@@ -16,29 +16,12 @@
     margin:5px;
     background-color: lemonchiffon;
 }
-#menu a {
+#menu button {
     display:block;
     width:200px;
     color:olive;
-}
-#menu ul li ul {
-    text-align: left;
-    display:none;
-}
-#menu ul li ul a {
-    min-width: 190px;
-    width:auto;
-    padding: 5px;
-}
-#menu ul li:hover ul {
-    display:block;
-}
-#menu li:hover ul li {
-    margin: 0px;
-    float:none;
-}
-#menu li ul {
-    position:absolute;
+    border: none;
+    background-color: lemonchiffon;
 }
 #category{
     margin:0 auto;

@@ -41,8 +41,4 @@ public class SuperController {
         model.addAttribute("title","Pinthouse");
         return "integrated:contact";
     }
-    @RequestMapping (value="/category", method = RequestMethod.POST)
-    public String category (Model model){
-        return "integrated:category";
-    }
 }

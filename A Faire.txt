@@ -1,10 +1,11 @@
 Android :
 	liste de tous les emprunts avec boutons flèches (voir Figure 5) (Louise)
-	Affiche un outils mettre les étoiles/notes (Louise)
-	Affiche un outil faire le bouton profil (Benji)
-	faire test demande pret (Louise)
-	Catalogue afficher les outils (Benji)
+	fini - Affiche un outils mettre les étoiles/notes (Louise)
+	fini - faire test demande pret (Louise)
 	Formulaire ajout outil (Louise)
+
+	Affiche un outil faire le bouton profil (Benji)
+	Catalogue afficher les outils (Benji)
 	Faire l'affichage un outil par le catalogue (Figure 14) (Benji)
 	Faire profil (Benji)
 
@@ -13,6 +14,7 @@ JAVA WEB :
 	fini - page quand on s'est connecté (Louise)
 	fini - Afficher les 4 catégories (Louise)
 	fini - faire les listes sur le côté (Louise)
+
 	faire la liste de toutes les bières dans le home (Benji)
 	faire une page spécifique à une bière (Benji)
 	faire le panier (Benji)
