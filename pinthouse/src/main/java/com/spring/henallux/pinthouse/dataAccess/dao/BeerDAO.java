@@ -60,4 +60,10 @@ public class BeerDAO implements BeerDataAccess {
         }
         return list;
     }
+
+    @Override
+    public Beer getBeerByName(String name) {
+        BeerEntity beerEntity = beerRepository.getByName(name);
+        return converter.BeerEntityToBeerModel(beerEntity);
+    }
 }

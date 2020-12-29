@@ -40,6 +40,10 @@ public class ProviderConverter {
         return mapper.map(cityEntity,City.class);
     }
 
+    public CommandLineEntity commandLineModelToEntity(CommandLine commandLine){
+        return mapper.map(commandLine, CommandLineEntity.class);
+    }
+
     public BeerColor beerColorEntityToModel(BeerColorEntity beerColorEntity){
         return mapper.map(beerColorEntity, BeerColor.class);
     }

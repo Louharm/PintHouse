@@ -26,7 +26,7 @@
     </div>
     <div class="AllBeersInStore">
         <c:forEach items="${beersList}" var="elem">
-            <a href='<spring:url value="/beerDetails/"/> '>
+            <a href='<spring:url value="/beerDetails?name=${elem.name}"/>'>
                 <div class="beerDisplay">
                     <h4>${elem.name}</h4>
                     <img src="" alt="Image de biere">

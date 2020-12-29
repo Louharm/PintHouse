@@ -8,4 +8,6 @@ public interface BeerDataAccess {
     ArrayList<Beer> getAllBeers();
 
     ArrayList<Beer> getAllBeersByCategory(String categoryName, String elem);
+
+    Beer getBeerByName(String name);
 }

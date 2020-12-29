@@ -1,6 +1,8 @@
 body{
     background-color: olive;
     color: lemonchiffon;
+
+    font-family: "Netto", helvetica, arial, "sans-serif"
 }
 h2{
     text-align: center;

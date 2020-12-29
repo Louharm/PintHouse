@@ -1,20 +1,47 @@
 package com.spring.henallux.pinthouse.controller;
 
+import com.spring.henallux.pinthouse.Constants;
+import com.spring.henallux.pinthouse.dataAccess.dao.BeerDataAccess;
+import com.spring.henallux.pinthouse.model.Beer;
+import com.spring.henallux.pinthouse.model.CommandLine;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping(value="/beerDetails")
 public class BeerDetailsController extends SuperController {
-    public BeerDetailsController(){
-
+    private BeerDataAccess beerDataAccess;
+    @Autowired
+    BeerDetailsController(BeerDataAccess beerDataAccess){
+        this.beerDataAccess = beerDataAccess;
     }
 
+    @ModelAttribute(Constants.COMMAND_LINE)
+    public CommandLine commandLine() {return new CommandLine();}
+
     @RequestMapping (method = RequestMethod.GET)
-    public String beerDetails (Model model){
+    public String home (Model model, @RequestParam() final String name, @RequestParam(required = false) final String elemCategory){
+        model.addAttribute("name", name);
         model.addAttribute("title","Pinthouse");
-        return "integretad:beerDetails";
+        Beer beer = beerDataAccess.getBeerByName(name);
+        model.addAttribute("beer", beer);
+        model.addAttribute(Constants.COMMAND_LINE, new CommandLine());
+        return "integrated:beerDetails";
+    }
+
+    @RequestMapping (value="/send", method = RequestMethod.POST)
+    public String getFormData(Model model, @Valid @ModelAttribute(value = Constants.COMMAND_LINE) CommandLine commandLine, final BindingResult errors){
+        if(!errors.hasErrors()){
+            // ajouter dans le panier
+        }
+        return "integrated:beerDetails";
     }
 }

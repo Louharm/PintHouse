@@ -45,4 +45,9 @@ public class SuperController {
     public String category (Model model){
         return "integrated:category";
     }
+
+    @RequestMapping (value ="/beerDetails", method = RequestMethod.POST)
+    public String beerDetailsLink (Model model){
+        return "integrated:beerDetails";
+    }
 }

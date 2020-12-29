@@ -12,4 +12,5 @@ public interface BeerRepository extends JpaRepository<BeerEntity, String> {
    List<BeerEntity> getAllByBeerColor(String beerColor);
    List<BeerEntity> getAllByBreweryName(String brewery);
    List<BeerEntity> getAllByBeerTypeName(String beerType);
+   BeerEntity getByName(String name);
 }
