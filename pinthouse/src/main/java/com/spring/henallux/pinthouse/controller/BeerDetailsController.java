@@ -15,7 +15,7 @@ import java.util.HashMap;
 
 @Controller
 @RequestMapping(value="/beerDetails/{name}")
-@SessionAttributes({"basket"})
+@SessionAttributes(Constants.BASKET)
 public class BeerDetailsController extends SuperController {
     private BeerDataAccess beerDataAccess;
     @Autowired
@@ -36,11 +36,12 @@ public class BeerDetailsController extends SuperController {
         return "integrated:beerDetails";
     }
 
-    @RequestMapping (value="/send:{name}", method = RequestMethod.POST)
-    public String getFormData(@PathVariable("name") String name, Model model, @ModelAttribute HashMap<String, Integer> basket, @Valid @ModelAttribute(value = Constants.COMMAND_LINE) CommandLine commandLine, final BindingResult errors){
+    @RequestMapping (value="/send", method = RequestMethod.POST)
+    public String getFormData(@PathVariable("name") String name, Model model, @ModelAttribute(Constants.BASKET) HashMap<String, Integer> basket, @Valid @ModelAttribute(value = Constants.COMMAND_LINE) CommandLine commandLine, final BindingResult errors){
         if(!errors.hasErrors()){
             if(basket.containsKey(name)){
-                basket.replace(name, commandLine.getQuantity());
+                int quantity = basket.get(name);
+                basket.replace(name, commandLine.getQuantity() + quantity);
             } else {
                 basket.put(name, commandLine.getQuantity());
             }

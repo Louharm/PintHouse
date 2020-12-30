@@ -1,5 +1,6 @@
 package com.spring.henallux.pinthouse.controller;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import com.spring.henallux.pinthouse.Constants;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,9 +16,9 @@ import java.util.HashMap;
 @SessionAttributes(Constants.BASKET)
 public class CartController extends SuperController {
     @RequestMapping (method = RequestMethod.GET)
-    public String home (Model model, @ModelAttribute HashMap<String, Integer> cart){
-        if(cart != null){
-
+    public String home (Model model, @ModelAttribute(Constants.BASKET) HashMap<String, Integer> basket){
+        if(basket.size() > 0){
+            System.out.println("hey");
         }
         model.addAttribute("title","Pinthouse");
         return "integrated:cart";

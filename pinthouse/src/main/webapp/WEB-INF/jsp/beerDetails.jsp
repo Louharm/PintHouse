@@ -27,14 +27,12 @@
             <p>${beer.price}€</p>
             <form:form  id="quantityBeer"
                         method="post"
-                        action="/pinthouse/beerDetails/send:${beer.name}"
+                        action="/pinthouse/beerDetails/${beer.name}/send"
                         modelAttribute="commandLine">
                 <br/>
                 <form:label path="quantity">Quantité : </form:label>
-                <button type="submit" id="btnMin">-</button>
-                <form:input min="1" path="quantity"/>
+                <form:input type="number" min="1" path="quantity"/>
                 <form:errors path="quantity"/>
-                <button type="submit" id="btnMax">+</button>
                 <br/>
                 <form:button>Ajouter</form:button>
             </form:form>

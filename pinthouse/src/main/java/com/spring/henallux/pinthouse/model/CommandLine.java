@@ -1,6 +1,7 @@
 package com.spring.henallux.pinthouse.model;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 public class CommandLine {
@@ -8,8 +9,7 @@ public class CommandLine {
     private Double realPrice;
     private String beerName;
     private Integer commandId;
-    @NotEmpty
-    @Pattern(regexp="[0-9]*",message="ne doit avoir que des chiffres")
+    @NotNull
     private Integer quantity;
 
     public CommandLine(Integer id, Double realPrice, String beerName, Integer commandId, Integer quantity) {
