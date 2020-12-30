@@ -24,7 +24,7 @@ public class MainConfiguration implements WebMvcConfigurer {
     public ResourceBundleMessageSource messageSource(){
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
         messageSource.setDefaultEncoding("UTF-8");
-        messageSource.setBasenames("translations/general");
+        messageSource.setBasenames("translations/general","translations/errors","translations/SignIn_signUp");
         messageSource.setUseCodeAsDefaultMessage(true);
         return messageSource;
     }

@@ -8,7 +8,7 @@
 <body>
 <h2><spring:message code="SingUp"/></h2>
 <div id="form">
-    <form:form id="formSignUp" method="POST" action="/pinthouse/inscription/send" modelAttribute="currentUser">
+    <form:form id="formSignUp" method="POST" action="/pinthouse/inscription/send" modelAttribute="userForm">
         <form:label path="lastName"><spring:message code="LastName"/> :</form:label>
         <form:input path="lastName"/>
         <form:errors path="lastName"/>
@@ -32,6 +32,7 @@
         <form:label path="street"><spring:message code="Street"/> :</form:label>
         <form:input path="street"/>
         <form:errors path="street"/>
+        <br/>
         <form:label path="numHouse"><spring:message code="Number"/> :</form:label>
         <form:input path="numHouse" class="petitChamp"/>
         <form:errors path="numHouse"/>
@@ -39,6 +40,7 @@
         <form:label path="city"><spring:message code="City"/> :</form:label>
         <form:input path="city"/>
         <form:errors path="city"/>
+        <br/>
         <form:label path="postCode"><spring:message code="PostCode"/> :</form:label>
         <form:input path="postCode" class="petitChamp"/>
         <form:errors path="postCode"/>

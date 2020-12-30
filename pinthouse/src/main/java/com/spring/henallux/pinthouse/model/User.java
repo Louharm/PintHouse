@@ -15,7 +15,7 @@ import static org.springframework.util.StringUtils.isEmpty;
 
 public class User implements UserDetails {
     @NotEmpty
-    @Pattern(regexp=".*@.*\\..*",message="doit être une adresse mail")
+    @Pattern(regexp=".*@.*\\..*")
     private String username;
     @NotEmpty
     private String password;

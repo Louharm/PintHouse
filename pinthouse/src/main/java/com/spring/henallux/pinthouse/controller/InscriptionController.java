@@ -46,12 +46,12 @@ public class InscriptionController extends SuperController {
     public String home (Model model){
         model.addAttribute("countries", countries);
         model.addAttribute("title","Pinthouse");
-        model.addAttribute(Constants.CURRENT_USER, new User());
+        model.addAttribute("userForm", new User());
         return "integrated:inscription";
     }
 
     @RequestMapping (value="/send",method = RequestMethod.POST)
-    public String getFormData(Model model, @Valid @ModelAttribute(value=Constants.CURRENT_USER) User user, final BindingResult errors){
+    public String getFormData(Model model, @Valid @ModelAttribute(value="userForm") User user, final BindingResult errors){
         if(!errors.hasErrors()){
             if(user.getConfirmPassword().equals(user.getPassword())){
                 Country country = countryDataAccess.getCountryByNameFr(user.getCountry());
@@ -75,7 +75,8 @@ public class InscriptionController extends SuperController {
                 return "redirect:/authenticated";
             }
         }
-        model.addAttribute("title", "Page d'inscription");
+        model.addAttribute("title", "Pinthouse");
+        model.addAttribute("userForm", user);
         model.addAttribute("countries", countries);
         return "integrated:inscription";
     }
