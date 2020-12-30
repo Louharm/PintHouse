@@ -14,8 +14,12 @@ import javax.validation.Valid;
 import java.util.HashMap;
 
 @Controller
+<<<<<<< HEAD
 @RequestMapping(value="/beerDetails/{name}")
+=======
+@RequestMapping(value="/beerDetails")
 @SessionAttributes({"basket"})
+>>>>>>> 2db78144b4700af1095eb9bcdee17b83c6647852
 public class BeerDetailsController extends SuperController {
     private BeerDataAccess beerDataAccess;
     @Autowired
