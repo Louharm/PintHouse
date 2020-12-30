@@ -8,15 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.HashMap;
 
 @Controller
 @RequestMapping(value="/beerDetails")
+@SessionAttributes({"basket"})
 public class BeerDetailsController extends SuperController {
     private BeerDataAccess beerDataAccess;
     @Autowired
@@ -37,11 +36,17 @@ public class BeerDetailsController extends SuperController {
         return "integrated:beerDetails";
     }
 
-    @RequestMapping (value="/send", method = RequestMethod.POST)
-    public String getFormData(Model model, @Valid @ModelAttribute(value = Constants.COMMAND_LINE) CommandLine commandLine, final BindingResult errors){
+    @RequestMapping (value="/send:{name}", method = RequestMethod.POST)
+    public String getFormData(@PathVariable("name") String name, Model model, @ModelAttribute HashMap<String, Integer> basket, @Valid @ModelAttribute(value = Constants.COMMAND_LINE) CommandLine commandLine, final BindingResult errors){
         if(!errors.hasErrors()){
-            // ajouter dans le panier
+            if(basket.containsKey(name)){
+                basket.replace(name, commandLine.getQuantity());
+            } else {
+                basket.put(name, commandLine.getQuantity());
+            }
+            return "redirect:/cart";
+        } else {
+            return "redirect:/home";
         }
-        return "integrated:beerDetails";
     }
 }

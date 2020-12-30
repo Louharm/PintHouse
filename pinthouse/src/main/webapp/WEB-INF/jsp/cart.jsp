@@ -5,6 +5,6 @@
 <head>
 </head>
 <body>
-<p>Panier</p>
+<p>Panier avec des trucs</p>
 </body>
 </html>

@@ -20,6 +20,10 @@ public class CommandLine {
         this.quantity = quantity;
     }
 
+    public CommandLine(Integer quantity){
+        this.quantity = quantity;
+    }
+
     public CommandLine() {
     }
 
