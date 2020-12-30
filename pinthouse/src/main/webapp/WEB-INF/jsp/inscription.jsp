@@ -9,51 +9,51 @@
 <h2>Inscription</h2>
 <div id="form">
     <form:form id="formSignUp" method="POST" action="/pinthouse/inscription/send" modelAttribute="currentUser">
-        <form:label path="lastName">Nom de famille :</form:label>
+        <form:label path="lastName"><spring:message code="lastName"/> :</form:label>
         <form:input path="lastName"/>
         <form:errors path="lastName"/>
         <br/>
-        <form:label path="firstName">Prénom :</form:label>
+        <form:label path="firstName"><spring:message code="firstName"/> :</form:label>
         <form:input path="firstName"/>
         <form:errors path="firstName"/>
         <br/>
-        <form:label path="username">Adresse mail :</form:label>
+        <form:label path="username"><spring:message code="mail"/> :</form:label>
         <form:input path="username"/>
         <form:errors path="username"/>
         <br/>
-        <form:label path="password">Mot de passe :</form:label>
+        <form:label path="password"><spring:message code="password"/> :</form:label>
         <form:password path="password"/>
         <form:errors path="password"/>
         <br/>
-        <form:label path="confirmPassword">Confirmer mot de passe :</form:label>
+        <form:label path="confirmPassword"><spring:message code="confirmPassword"/> :</form:label>
         <form:password path="confirmPassword"/>
         <form:errors path="confirmPassword"/>
         <br/>
-        <form:label path="street">Rue :</form:label>
+        <form:label path="street"><spring:message code="street"/> :</form:label>
         <form:input path="street"/>
         <form:errors path="street"/>
-        <form:label path="numHouse">Numéro :</form:label>
+        <form:label path="numHouse"><spring:message code="number"/> :</form:label>
         <form:input path="numHouse" class="petitChamp"/>
         <form:errors path="numHouse"/>
         <br/>
-        <form:label path="city">Ville :</form:label>
+        <form:label path="city"><spring:message code="city"/> :</form:label>
         <form:input path="city"/>
         <form:errors path="city"/>
-        <form:label path="postCode">Code Postal :</form:label>
+        <form:label path="postCode"><spring:message code="postCode"/> :</form:label>
         <form:input path="postCode" class="petitChamp"/>
         <form:errors path="postCode"/>
         <br/>
-        <form:label path="country">Pays :</form:label>
+        <form:label path="country"><spring:message code="country"/> :</form:label>
         <form:select path="country">
             <form:options items="${countries}" itemValue="nameFr" itemLabel="nameFr"/>
         </form:select>
         <form:errors path="country"/>
         <br/>
-        <form:label path="phoneNumber">Numéro de GSM (format : +00 000/00.00.00)</form:label>
+        <form:label path="phoneNumber"><spring:message code="phone"/> (<spring:message code="format"/> : +00 000/00.00.00)</form:label>
         <form:input path="phoneNumber"/>
         <form:errors path="phoneNumber"/>
         <br/>
-        <form:button>S'inscrire</form:button>
+        <form:button><spring:message code="SingUp"/></form:button>
     </form:form>
 </div>
 </body>

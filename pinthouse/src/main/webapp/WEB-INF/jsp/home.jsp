@@ -19,7 +19,7 @@
 
     <div class="AllBeersInStore">
             <c:forEach items="${beersList}" var="elem">
-                <a href='<spring:url value="/beerDetails?name=${elem.name}"/>'>
+                <button onclick="window.location.href ='<c:url value="/beerDetails/${elem.name}"/>'">
                     <div class="beerDisplay">
                         <h4>${elem.name}</h4>
                         <img src="" alt="Image de biere">
@@ -30,7 +30,7 @@
                         <p>${elem.alcoholPerc}%</p>
                         <p id="priceTag">${elem.price}€</p>
                     </div>
-                </a>
+                </button>
             </c:forEach>
     </div>
 </body>

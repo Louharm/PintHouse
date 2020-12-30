@@ -25,7 +25,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
             "/contact",
             "/css/**",
             "/images/**",
-            "/beerDetails"
+            "/beerDetails/**"
     };
     private static final String[] AUTHORIZED_REQUESTS_ADMIN = new String[]{"/admin"};
 

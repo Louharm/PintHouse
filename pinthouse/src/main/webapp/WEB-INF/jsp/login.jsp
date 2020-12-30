@@ -9,16 +9,16 @@
 <h2>Connexion</h2>
 <div id="form">
     <form:form id="formSignUp" method="POST" modelAttribute="currentUser">
-        <form:label path="username">Adresse mail :</form:label>
+        <form:label path="username"><spring:message code="mail"/> :</form:label>
         <form:input path="username"/>
         <br/>
-        <form:label path="password">Mot de passe :</form:label>
+        <form:label path="password"><spring:message code="password"/> :</form:label>
         <form:password path="password"/>
         <br/>
         <br/>
-        <form:button>Se connecter</form:button>
+        <form:button><spring:message code="SignIn"/></form:button>
     </form:form>
-    <a href='<spring:url value="/inscription"/>' class="linkToButton">S'inscrire</a>
+    <a href='<spring:url value="/inscription"/>' class="linkToButton"><spring:message code="SingUp"/></a>
 </div>
 </body>
 </html>

@@ -8,15 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping(value="/beerDetails")
+@RequestMapping(value="/beerDetails/{name}")
 public class BeerDetailsController extends SuperController {
     private BeerDataAccess beerDataAccess;
     @Autowired
@@ -28,7 +25,7 @@ public class BeerDetailsController extends SuperController {
     public CommandLine commandLine() {return new CommandLine();}
 
     @RequestMapping (method = RequestMethod.GET)
-    public String home (Model model, @RequestParam() final String name, @RequestParam(required = false) final String elemCategory){
+    public String home (Model model, @PathVariable() final String name){
         model.addAttribute("name", name);
         model.addAttribute("title","Pinthouse");
         Beer beer = beerDataAccess.getBeerByName(name);
