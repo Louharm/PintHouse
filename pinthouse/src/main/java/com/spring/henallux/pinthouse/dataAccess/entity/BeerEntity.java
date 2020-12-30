@@ -16,6 +16,9 @@ public class BeerEntity {
     @Column(name="alcoholperc")
     private Double alcoholPerc;
 
+    @Column(name="capacitycl")
+    private Double capacityCl;
+
     @Column(name="price")
     private Double price;
 
@@ -32,6 +35,14 @@ public class BeerEntity {
     private String beerColor;
 
     public BeerEntity() {
+    }
+
+    public Double getCapacityCl() {
+        return capacityCl;
+    }
+
+    public void setCapacityCl(Double capacityCl) {
+        this.capacityCl = capacityCl;
     }
 
     public String getName() {
