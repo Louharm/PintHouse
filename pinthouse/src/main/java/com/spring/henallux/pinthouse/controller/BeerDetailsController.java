@@ -30,7 +30,7 @@ public class BeerDetailsController extends SuperController {
     public String home (Model model, @PathVariable() final String name){
         model.addAttribute("name", name);
         model.addAttribute("title","Pinthouse");
-        Beer beer = beerDataAccess.getBeerByName(name);
+        Beer beer = beerDataAccess.getBeerByName(name,getCurrentLanguage());
         model.addAttribute("beer", beer);
         model.addAttribute(Constants.COMMAND_LINE, new CommandLine());
         return "integrated:beerDetails";

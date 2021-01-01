@@ -24,9 +24,9 @@ import java.util.regex.Pattern;
 @Controller
 @RequestMapping(value="/inscription")
 public class InscriptionController extends SuperController {
-    private UserDataAccess userDataAccess;
-    private CityDataAccess cityDataAccess;
-    private CountryDataAccess countryDataAccess;
+    private final UserDataAccess userDataAccess;
+    private final CityDataAccess cityDataAccess;
+    private final CountryDataAccess countryDataAccess;
     ArrayList<Country> countries;
 
     @Autowired
@@ -34,7 +34,6 @@ public class InscriptionController extends SuperController {
         this.userDataAccess = userDataAccess;
         this.cityDataAccess = cityDataAccess;
         this.countryDataAccess = countryDataAccess;
-        countries = countryDataAccess.getAllCountries();
     }
 
     @ModelAttribute(Constants.CURRENT_USER)
@@ -44,6 +43,7 @@ public class InscriptionController extends SuperController {
 
     @RequestMapping (method = RequestMethod.GET)
     public String home (Model model){
+        countries = countryDataAccess.getAllCountries(getCurrentLanguage());
         model.addAttribute("countries", countries);
         model.addAttribute("title","Pinthouse");
         model.addAttribute("userForm", new User());
@@ -54,13 +54,12 @@ public class InscriptionController extends SuperController {
     public String getFormData(Model model, @Valid @ModelAttribute(value="userForm") User user, final BindingResult errors){
         if(!errors.hasErrors()){
             if(user.getConfirmPassword().equals(user.getPassword())){
-                Country country = countryDataAccess.getCountryByNameFr(user.getCountry());
-                City city = new City(user.getCity(), user.getPostCode(), country.getNameEn());
-                City cityFound = cityDataAccess.getCityByNameAndCountry(user.getCity(), country.getNameEn());
+                City city = new City(user.getCity(), user.getPostCode(), user.getCountry());
+                City cityFound = cityDataAccess.getCityByNameAndCountry(user.getCity(), user.getCountry());
                 if(cityFound == null){
                     city.setId(0);
                     cityDataAccess.save(city);
-                    cityFound = cityDataAccess.getCityByNameAndCountry(user.getCity(), country.getNameEn());
+                    cityFound = cityDataAccess.getCityByNameAndCountry(user.getCity(), user.getCountry());
                 }
 
                 user.setAuthorities("ROLE_USER");

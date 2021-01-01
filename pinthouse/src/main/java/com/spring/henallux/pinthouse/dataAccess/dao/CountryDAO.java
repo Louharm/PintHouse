@@ -1,7 +1,7 @@
 package com.spring.henallux.pinthouse.dataAccess.dao;
 
-import com.spring.henallux.pinthouse.dataAccess.entity.CountryEntity;
-import com.spring.henallux.pinthouse.dataAccess.repository.CountryRepository;
+import com.spring.henallux.pinthouse.dataAccess.entity.TranslationCountryEntity;
+import com.spring.henallux.pinthouse.dataAccess.repository.TranslationCountryRepository;
 import com.spring.henallux.pinthouse.dataAccess.util.ProviderConverter;
 import com.spring.henallux.pinthouse.model.Country;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,26 +15,20 @@ import java.util.List;
 @Transactional
 public class CountryDAO implements CountryDataAccess{
     private ProviderConverter converter;
-    private CountryRepository countryRepository;
+    private TranslationCountryRepository translationCountryRepository;
 
     @Autowired
-    public CountryDAO(CountryRepository repository, ProviderConverter converter){
-        this.countryRepository = repository;
+    public CountryDAO(TranslationCountryRepository repository, ProviderConverter converter){
+        this.translationCountryRepository = repository;
         this.converter = converter;
     }
 
     @Override
-    public Country getCountryByNameFr(String name) {
-        CountryEntity countryEntity = countryRepository.findByNameFr(name);
-        return converter.CountryEntityToModel(countryEntity);
-    }
-
-    @Override
-    public ArrayList<Country> getAllCountries() {
-        List<CountryEntity> countryEntities = countryRepository.findAll();
+    public ArrayList<Country> getAllCountries(String language) {
+        List<TranslationCountryEntity> countryEntities = translationCountryRepository.findAllByLanguage(language);
         ArrayList<Country> list = new ArrayList<>();
-        for(CountryEntity countryEntity : countryEntities){
-            list.add(converter.CountryEntityToModel(countryEntity));
+        for(TranslationCountryEntity translationCountryEntity : countryEntities){
+            list.add(converter.countryEntityToModel(translationCountryEntity));
         }
         return list;
     }

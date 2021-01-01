@@ -5,5 +5,5 @@ import com.spring.henallux.pinthouse.model.BeerType;
 import java.util.ArrayList;
 
 public interface BeerTypeDataAccess {
-    ArrayList<BeerType> getAllBeerType();
+    ArrayList<BeerType> getAllBeerType(String Language);
 }

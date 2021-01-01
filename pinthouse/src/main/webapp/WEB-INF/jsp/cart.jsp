@@ -9,13 +9,13 @@
         <div id="table">
             <table>
                 <caption>
-                    <h3>MON PANIER</h3> <p>(${basket.size()} produit(s))</p>
+                    <h3><spring:message code="Cart"/></h3> <p>(${basket.size()} <spring:message code="Product"/>(s))</p>
                 </caption>
                 <thead>
-                    <th>Produit</th>
-                    <th>Prix</th>
-                    <th>Quantité</th>
-                    <th>Total</th>
+                    <th><spring:message code="Product"/></th>
+                    <th><spring:message code="Price"/></th>
+                    <th><spring:message code="Quantity"/></th>
+                    <th><spring:message code="Total"/></th>
                 </thead>
                 <tbody>
                     <c:forEach items="${beers}" var="elem">
@@ -28,17 +28,17 @@
                     </c:forEach>
                     <tr class="footer">
                         <td colspan="2"></td>
-                        <td>Sous total : </td>
+                        <td><spring:message code="SubTotal"/> : </td>
                         <td>${total} €</td>
                     </tr>
                 </tbody>
             </table>
 
-            <button>Valider ma commande</button>
+            <button><spring:message code="ValidateOrder"/></button>
         </div>
     </c:if>
     <c:if test="${basket.size() == 0}">
-        <p>Votre panier est vide !</p>
+        <p><spring:message code="EmptyCart"/></p>
     </c:if>
 </body>
 </html>

@@ -6,20 +6,20 @@ public class Beer {
     private Double alcoholPerc;
     private Double capacityCl;
     private Double price;
-    private String breweryName;
-    private String countryName;
-    private String beerTypeName;
+    private String brewery;
+    private String country;
+    private String beerType;
     private String beerColor;
 
-    public Beer(String name, String description, Double alcoholPerc, Double capacityCl, Double price, String breweryName, String countryName, String beerTypeName, String beerColor) {
+    public Beer(String name, String description, Double alcoholPerc, Double capacityCl, Double price, String brewery, String country, String beerType, String beerColor) {
         this.name = name;
         this.description = description;
         this.alcoholPerc = alcoholPerc;
         this.capacityCl = capacityCl;
         this.price = price;
-        this.breweryName = breweryName;
-        this.countryName = countryName;
-        this.beerTypeName = beerTypeName;
+        this.brewery = brewery;
+        this.country = country;
+        this.beerType = beerType;
         this.beerColor = beerColor;
     }
 
@@ -67,28 +67,28 @@ public class Beer {
         this.price = price;
     }
 
-    public String getBreweryName() {
-        return breweryName;
+    public String getBrewery() {
+        return brewery;
     }
 
-    public void setBreweryName(String breweryName) {
-        this.breweryName = breweryName;
+    public void setBrewery(String brewery) {
+        this.brewery = brewery;
     }
 
-    public String getCountryName() {
-        return countryName;
+    public String getCountry() {
+        return country;
     }
 
-    public void setCountryName(String countryName) {
-        this.countryName = countryName;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
-    public String getBeerTypeName() {
-        return beerTypeName;
+    public String getBeerType() {
+        return beerType;
     }
 
-    public void setBeerTypeName(String beerTypeName) {
-        this.beerTypeName = beerTypeName;
+    public void setBeerType(String beerType) {
+        this.beerType = beerType;
     }
 
     public String getBeerColor() {

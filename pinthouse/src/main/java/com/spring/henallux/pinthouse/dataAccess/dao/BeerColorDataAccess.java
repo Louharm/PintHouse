@@ -5,5 +5,5 @@ import com.spring.henallux.pinthouse.model.BeerColor;
 import java.util.ArrayList;
 
 public interface BeerColorDataAccess {
-    ArrayList<BeerColor> getAllBeerColor();
+    ArrayList<BeerColor> getAllBeerColor(String language);
 }

@@ -1,9 +1,12 @@
 package com.spring.henallux.pinthouse.controller;
 
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.Locale;
 
 @Controller
 public class SuperController {
@@ -49,5 +52,10 @@ public class SuperController {
     @RequestMapping (value ="/beerDetails", method = RequestMethod.POST)
     public String beerDetailsLink (Model model){
         return "integrated:beerDetails";
+    }
+
+    public String getCurrentLanguage(){
+        Locale locale = LocaleContextHolder.getLocale();
+        return locale.getLanguage();
     }
 }

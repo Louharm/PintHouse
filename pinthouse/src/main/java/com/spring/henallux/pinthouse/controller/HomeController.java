@@ -17,8 +17,8 @@ import java.util.HashMap;
 @RequestMapping(value="/home")
 @SessionAttributes(Constants.BASKET)
 public class HomeController extends SuperController {
-    private CountryDataAccess countryDataAccess;
-    private BeerDataAccess beerDataAccess;
+    private final CountryDataAccess countryDataAccess;
+    private final BeerDataAccess beerDataAccess;
 
     @ModelAttribute(Constants.BASKET)
     public HashMap<String, Integer> basket(){
@@ -33,8 +33,8 @@ public class HomeController extends SuperController {
 
     @RequestMapping (method = RequestMethod.GET)
     public String home (Model model){
-        ArrayList<Country> countries = countryDataAccess.getAllCountries();
-        ArrayList<Beer> beers = beerDataAccess.getAllBeers();
+        ArrayList<Country> countries = countryDataAccess.getAllCountries(getCurrentLanguage());
+        ArrayList<Beer> beers = beerDataAccess.getAllBeers(getCurrentLanguage());
         model.addAttribute("countryList",countries);
         model.addAttribute("title","Pinthouse");
         model.addAttribute("beersList", beers);

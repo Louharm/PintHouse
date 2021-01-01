@@ -13,12 +13,12 @@
         </div>
         <div id="center-column">
             <h3>${beer.name}</h3>
-            <p>${beer.breweryName}</p>
+            <p>${beer.brewery}</p>
             <p>${beer.description}</p>
             <ul>
-                <li>${beer.countryName}</li>
+                <li>${beer.country}</li>
                 <li>${beer.beerColor}</li>
-                <li>${beer.beerTypeName}</li>
+                <li>${beer.beerType}</li>
                 <li>${beer.alcoholPerc}%</li>
                 <li>${beer.capacityCl}CL</li>
             </ul>
@@ -30,11 +30,11 @@
                         action="/pinthouse/beerDetails/${beer.name}/send"
                         modelAttribute="commandLine">
                 <br/>
-                <form:label path="quantity">Quantité : </form:label>
+                <form:label path="quantity"><spring:message code="Quantity"/> : </form:label>
                 <form:input type="number" min="1" path="quantity"/>
                 <form:errors path="quantity"/>
                 <br/>
-                <form:button>Ajouter</form:button>
+                <form:button><spring:message code="Add"/></form:button>
             </form:form>
         </div>
     </div>

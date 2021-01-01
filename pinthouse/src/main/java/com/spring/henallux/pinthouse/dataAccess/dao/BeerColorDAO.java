@@ -1,9 +1,8 @@
 package com.spring.henallux.pinthouse.dataAccess.dao;
 
-import com.spring.henallux.pinthouse.dataAccess.entity.BeerColorEntity;
-import com.spring.henallux.pinthouse.dataAccess.repository.BeerColorRepository;
+import com.spring.henallux.pinthouse.dataAccess.entity.TranslationBeerColorEntity;
+import com.spring.henallux.pinthouse.dataAccess.repository.TranslationBeerColorRepository;
 import com.spring.henallux.pinthouse.dataAccess.util.ProviderConverter;
-import com.spring.henallux.pinthouse.model.Beer;
 import com.spring.henallux.pinthouse.model.BeerColor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,19 +15,20 @@ import java.util.List;
 @Transactional
 public class BeerColorDAO implements BeerColorDataAccess{
     private ProviderConverter converter;
-    private BeerColorRepository beerColorRepository;
+    private TranslationBeerColorRepository translationRepository;
 
     @Autowired
-    public BeerColorDAO(BeerColorRepository beerColorRepository, ProviderConverter converter){
-        this.beerColorRepository = beerColorRepository;
+    public BeerColorDAO(ProviderConverter converter, TranslationBeerColorRepository translationRepository){
         this.converter = converter;
+        this.translationRepository = translationRepository;
     }
+
     @Override
-    public ArrayList<BeerColor> getAllBeerColor(){
-        List<BeerColorEntity> beerColorEntities = beerColorRepository.findAll();
+    public ArrayList<BeerColor> getAllBeerColor(String language){
+        List<TranslationBeerColorEntity> translationEntities = translationRepository.findAllByLanguage(language);
         ArrayList<BeerColor> beerColors = new ArrayList<>();
-        for (BeerColorEntity beerColorEntity: beerColorEntities) {
-            beerColors.add(converter.beerColorEntityToModel(beerColorEntity));
+        for (TranslationBeerColorEntity translationEntity: translationEntities) {
+            beerColors.add(converter.beerColorEntityToModel(translationEntity));
         }
         return beerColors;
     }
