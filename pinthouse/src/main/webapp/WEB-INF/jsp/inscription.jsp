@@ -45,9 +45,9 @@
         <form:input path="postCode" class="petitChamp"/>
         <form:errors path="postCode"/>
         <br/>
-        <form:label path="country"><spring:message code="Country"/> :</form:label>
-        <form:select path="country">
-            <form:options items="${countries}" itemValue="nameFr" itemLabel="nameFr"/>
+        <form:label path="countryId"><spring:message code="Country"/> :</form:label>
+        <form:select path="countryId">
+            <form:options items="${countries}" itemValue="item" itemLabel="name"/>
         </form:select>
         <form:errors path="country"/>
         <br/>

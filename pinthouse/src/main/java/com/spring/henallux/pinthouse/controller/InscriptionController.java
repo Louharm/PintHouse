@@ -54,12 +54,12 @@ public class InscriptionController extends SuperController {
     public String getFormData(Model model, @Valid @ModelAttribute(value="userForm") User user, final BindingResult errors){
         if(!errors.hasErrors()){
             if(user.getConfirmPassword().equals(user.getPassword())){
-                City city = new City(user.getCity(), user.getPostCode(), user.getCountry());
-                City cityFound = cityDataAccess.getCityByNameAndCountry(user.getCity(), user.getCountry());
+                City cityFound = cityDataAccess.getCityByNameAndCountry(user.getCity(), user.getCountryId());
                 if(cityFound == null){
+                    City city = new City(user.getCity(), user.getPostCode(), user.getCountryId());
                     city.setId(0);
                     cityDataAccess.save(city);
-                    cityFound = cityDataAccess.getCityByNameAndCountry(user.getCity(), user.getCountry());
+                    cityFound = cityDataAccess.getCityByNameAndCountry(user.getCity(), user.getCountryId());
                 }
 
                 user.setAuthorities("ROLE_USER");

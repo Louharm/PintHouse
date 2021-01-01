@@ -14,8 +14,8 @@ public class CityEntity {
     private String name;
     @Column(name = "postcode")
     private String postCode;
-    @Column(name = "countryname")
-    private String countryName;
+    @Column(name = "country")
+    private Integer country;
 
     public CityEntity() {
     }
@@ -44,11 +44,11 @@ public class CityEntity {
         this.postCode = postCode;
     }
 
-    public String getCountryName() {
-        return countryName;
+    public Integer getCountry() {
+        return country;
     }
 
-    public void setCountryName(String countryName) {
-        this.countryName = countryName;
+    public void setCountry(Integer country) {
+        this.country = country;
     }
 }
