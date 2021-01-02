@@ -5,5 +5,5 @@ import com.spring.henallux.pinthouse.model.City;
 public interface CityDataAccess {
     void save(City city);
 
-    City getCityByNameAndCountry(String name, String country);
+    City getCityByNameAndCountry(String name, Integer country);
 }

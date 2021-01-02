@@ -1,7 +1,7 @@
 package com.spring.henallux.pinthouse.dataAccess.dao;
 
-import com.spring.henallux.pinthouse.dataAccess.entity.BreweryEntity;
-import com.spring.henallux.pinthouse.dataAccess.repository.BreweryRepository;
+import com.spring.henallux.pinthouse.dataAccess.entity.TranslationBreweryEntity;
+import com.spring.henallux.pinthouse.dataAccess.repository.TranslationBreweryRepository;
 import com.spring.henallux.pinthouse.dataAccess.util.ProviderConverter;
 import com.spring.henallux.pinthouse.model.Brewery;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,20 +15,20 @@ import java.util.List;
 @Transactional
 public class BreweryDAO implements BreweryDataAccess{
     private ProviderConverter converter;
-    private BreweryRepository breweryRepository;
+    private TranslationBreweryRepository translationRepository;
 
     @Autowired
-    public BreweryDAO(BreweryRepository breweryRepository, ProviderConverter converter){
-        this.breweryRepository = breweryRepository;
+    public BreweryDAO(ProviderConverter converter, TranslationBreweryRepository translationRepository){
+        this.translationRepository = translationRepository;
         this.converter = converter;
     }
 
     @Override
-    public ArrayList<Brewery> getAllBrewery() {
-        List<BreweryEntity> breweryEntities = breweryRepository.findAll();
+    public ArrayList<Brewery> getAllBrewery(String language) {
+        List<TranslationBreweryEntity> translationEntities = translationRepository.findAllByLanguage(language);
         ArrayList<Brewery> breweries = new ArrayList<>();
-        for (BreweryEntity breweryEntity : breweryEntities) {
-            breweries.add(converter.breweryEntityToModel(breweryEntity));
+        for (TranslationBreweryEntity translationEntity : translationEntities) {
+            breweries.add(converter.breweryEntityToModel(translationEntity));
         }
         return breweries;
     }

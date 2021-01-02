@@ -1,25 +1,34 @@
 package com.spring.henallux.pinthouse.model;
 
 public class BeerColor {
-    private String nameEn;
-    private String nameFr;
+    private String name;
+    private String language;
+    private Integer item;
 
     public BeerColor() {
     }
 
-    public String getNameEn() {
-        return nameEn;
+    public String getName() {
+        return name;
     }
 
-    public void setNameEn(String nameEn) {
-        this.nameEn = nameEn;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getNameFr() {
-        return nameFr;
+    public String getLanguage() {
+        return language;
     }
 
-    public void setNameFr(String nameFr) {
-        this.nameFr = nameFr;
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public Integer getItem() {
+        return item;
+    }
+
+    public void setItem(Integer item) {
+        this.item = item;
     }
 }

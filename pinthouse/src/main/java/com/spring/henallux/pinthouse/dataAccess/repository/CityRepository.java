@@ -9,5 +9,5 @@ public interface CityRepository extends JpaRepository<CityEntity, String> {
     @Override
     <S extends CityEntity> S save(S s);
 
-    CityEntity findByCountryNameAndName(String countryName, String name);
+    CityEntity findByCountryAndName(Integer countryName, String name);
 }

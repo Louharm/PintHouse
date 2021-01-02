@@ -4,20 +4,22 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity(name="City")
-public class CityEntity {
+@Entity(name="Translation_Country")
+public class TranslationCountryEntity {
     @Id
     @Column(name = "id")
     private Integer id;
 
     @Column(name = "name")
     private String name;
-    @Column(name = "postcode")
-    private String postCode;
-    @Column(name = "country")
-    private Integer country;
 
-    public CityEntity() {
+    @Column(name = "language")
+    private String language;
+
+    @Column(name = "item")
+    private Integer item;
+
+    public TranslationCountryEntity() {
     }
 
     public Integer getId() {
@@ -36,19 +38,19 @@ public class CityEntity {
         this.name = name;
     }
 
-    public String getPostCode() {
-        return postCode;
+    public String getLanguage() {
+        return language;
     }
 
-    public void setPostCode(String postCode) {
-        this.postCode = postCode;
+    public void setLanguage(String language) {
+        this.language = language;
     }
 
-    public Integer getCountry() {
-        return country;
+    public Integer getItem() {
+        return item;
     }
 
-    public void setCountry(Integer country) {
-        this.country = country;
+    public void setItem(Integer item) {
+        this.item = item;
     }
 }

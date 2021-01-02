@@ -34,6 +34,7 @@
                     </tr>
                 </tbody>
             </table>
+            <button onclick="window.location.href ='<c:url value="/cart/send"/>'">Valider ma commande</button>
             <button onclick="window.location.href ='<c:url value="/cart/send"/>'"><spring:message code="ValidateOrder"/></button>
         </div>
     </c:if>

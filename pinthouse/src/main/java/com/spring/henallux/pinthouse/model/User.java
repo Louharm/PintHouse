@@ -5,6 +5,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,7 +16,7 @@ import static org.springframework.util.StringUtils.isEmpty;
 
 public class User implements UserDetails {
     @NotEmpty
-    @Pattern(regexp=".*@.*\\..*",message="doit être une adresse mail")
+    @Pattern(regexp=".*@.*\\..*")
     private String username;
     @NotEmpty
     private String password;
@@ -49,7 +50,8 @@ public class User implements UserDetails {
     private String city;
     @NotEmpty
     private String postCode;
-    @NotEmpty
+    @NotNull
+    private Integer countryId;
     private String country;
 
     private int cityId;
@@ -166,6 +168,14 @@ public class User implements UserDetails {
 
     public void setPostCode(String postCode) {
         this.postCode = postCode;
+    }
+
+    public Integer getCountryId() {
+        return countryId;
+    }
+
+    public void setCountryId(Integer countryId) {
+        this.countryId = countryId;
     }
 
     public String getCountry() {

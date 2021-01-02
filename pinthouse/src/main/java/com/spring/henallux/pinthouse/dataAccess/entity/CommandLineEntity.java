@@ -1,12 +1,10 @@
 package com.spring.henallux.pinthouse.dataAccess.entity;
 
-import com.spring.henallux.pinthouse.model.CommandLine;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity(name = "commandline")
+@Entity(name = "Command_Line")
 public class CommandLineEntity {
     @Id
     @Column(name = "id")

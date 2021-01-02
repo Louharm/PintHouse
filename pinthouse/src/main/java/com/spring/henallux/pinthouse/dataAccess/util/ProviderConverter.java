@@ -44,24 +44,29 @@ public class ProviderConverter {
         return mapper.map(commandLine, CommandLineEntity.class);
     }
 
-    public BeerColor beerColorEntityToModel(BeerColorEntity beerColorEntity){
+    public BeerColor beerColorEntityToModel(TranslationBeerColorEntity beerColorEntity){
         return mapper.map(beerColorEntity, BeerColor.class);
     }
 
-    public BeerType beerTypeEntityToModel(BeerTypeEntity beerTypeEntity){
-        return mapper.map(beerTypeEntity, BeerType.class);
+    public BeerType beerTypeEntityToModel(TranslationBeerTypeEntity translationEntity){
+        return mapper.map(translationEntity, BeerType.class);
     }
 
-    public Brewery breweryEntityToModel(BreweryEntity breweryEntity){
+    public Brewery breweryEntityToModel(TranslationBreweryEntity breweryEntity){
         Brewery brewery = mapper.map(breweryEntity, Brewery.class);
         return brewery;
     }
 
-    public Country CountryEntityToModel(CountryEntity countryEntity){
-        return mapper.map(countryEntity,Country.class);
+    public Country countryEntityToModel(TranslationCountryEntity translationCountryEntity){
+        return mapper.map(translationCountryEntity,Country.class);
     }
 
-    public Beer BeerEntityToBeerModel(BeerEntity beerEntity){
-        return mapper.map(beerEntity, Beer.class);
+    public Beer beerEntityToBeerModel(BeerEntity beerEntity, TranslationBeerTypeEntity translationBeerTypeEntity, TranslationBeerColorEntity beerColorEntity, TranslationBreweryEntity breweryEntity, TranslationCountryEntity countryEntity){
+        Beer beer = mapper.map(beerEntity, Beer.class);
+        beer.setBeerType(translationBeerTypeEntity.getName());
+        beer.setBeerColor(beerColorEntity.getName());
+        beer.setBrewery(breweryEntity.getName());
+        beer.setCountry(countryEntity.getName());
+        return beer;
     }
 }

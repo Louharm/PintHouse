@@ -6,13 +6,13 @@
     <link type="text/css" href="<spring:url value='/css/connection.css'/>" rel="stylesheet">
 </head>
 <body>
-<h2>Connexion</h2>
+<h2><spring:message code="SignIn"/></h2>
 <div id="form">
     <form:form id="formSignUp" method="POST" modelAttribute="currentUser">
-        <form:label path="username"><spring:message code="mail"/> :</form:label>
+        <form:label path="username"><spring:message code="Mail"/> :</form:label>
         <form:input path="username"/>
         <br/>
-        <form:label path="password"><spring:message code="password"/> :</form:label>
+        <form:label path="password"><spring:message code="Password"/> :</form:label>
         <form:password path="password"/>
         <br/>
         <br/>

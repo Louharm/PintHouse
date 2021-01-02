@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 @Controller
 @RequestMapping(value= {"/cart", "/cart/delete/{name}"})
@@ -28,7 +27,7 @@ public class CartController extends SuperController {
         ArrayList<Beer> beers = new ArrayList<>();
         Double total = 0.0;
         for (String name: basket.keySet()) {
-            Beer beer = beerDataAccess.getBeerByName(name);
+            Beer beer = beerDataAccess.getBeerByName(name,getCurrentLanguage());
             total += beer.getPrice() * basket.get(name);
             beers.add(beer);
         }

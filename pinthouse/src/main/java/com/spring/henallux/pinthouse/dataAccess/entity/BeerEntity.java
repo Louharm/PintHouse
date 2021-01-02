@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity(name="beer")
+@Entity(name="Beer")
 public class BeerEntity {
     @Id
     @Column(name= "name")
@@ -22,17 +22,17 @@ public class BeerEntity {
     @Column(name="price")
     private Double price;
 
-    @Column(name = "breweryname")
-    private String breweryName;
+    @Column(name = "brewery")
+    private Integer brewery;
 
-    @Column(name = "countryname")
-    private String countryName;
+    @Column(name = "country")
+    private Integer country;
 
-    @Column(name = "beertypename")
-    private String beerTypeName;
+    @Column(name = "Beer_Type")
+    private Integer beerType;
 
-    @Column(name = "beercolor")
-    private String beerColor;
+    @Column(name = "Beer_Color")
+    private Integer beerColor;
 
     public BeerEntity() {
     }
@@ -77,35 +77,35 @@ public class BeerEntity {
         this.price = price;
     }
 
-    public String getBreweryName() {
-        return breweryName;
+    public Integer getBrewery() {
+        return brewery;
     }
 
-    public void setBreweryName(String breweryName) {
-        this.breweryName = breweryName;
+    public void setBrewery(Integer brewery) {
+        this.brewery = brewery;
     }
 
-    public String getCountryName() {
-        return countryName;
+    public Integer getCountry() {
+        return country;
     }
 
-    public void setCountryName(String countryName) {
-        this.countryName = countryName;
+    public void setCountry(Integer country) {
+        this.country = country;
     }
 
-    public String getBeerTypeName() {
-        return beerTypeName;
+    public Integer getBeerType() {
+        return beerType;
     }
 
-    public void setBeerTypeName(String beerTypeName) {
-        this.beerTypeName = beerTypeName;
+    public void setBeerType(Integer beerType) {
+        this.beerType = beerType;
     }
 
-    public String getBeerColor() {
+    public Integer getBeerColor() {
         return beerColor;
     }
 
-    public void setBeerColor(String beerColor) {
+    public void setBeerColor(Integer beerColor) {
         this.beerColor = beerColor;
     }
 }

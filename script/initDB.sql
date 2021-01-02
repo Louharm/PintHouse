@@ -1,14 +1,109 @@
 DROP TABLE IF EXISTS Beer_Promotion CASCADE;
-DROP TABLE IF EXISTS CommandeLine CASCADE;
+DROP TABLE IF EXISTS Commande_Line CASCADE;
 DROP TABLE IF EXISTS Beer CASCADE;
 DROP TABLE IF EXISTS Promotion CASCADE;
-DROP TABLE IF EXISTS BeerColor CASCADE;
-DROP TABLE IF EXISTS BeerType CASCADE;
+DROP TABLE IF EXISTS Translation_Beer_Color CASCADE;
+DROP TABLE IF EXISTS Translation_Beer_Type CASCADE;
+DROP TABLE IF EXISTS Translation_Brewery CASCADE;
+DROP TABLE IF EXISTS Translation_Country CASCADE;
+DROP TABLE IF EXISTS Language CASCADE;
+DROP TABLE IF EXISTS Beer_Color CASCADE;
+DROP TABLE IF EXISTS Beer_Type CASCADE;
 DROP TABLE IF EXISTS Brewery CASCADE;
 DROP TABLE IF EXISTS Commande CASCADE;
 DROP TABLE IF EXISTS User CASCADE;
 DROP TABLE IF EXISTS City CASCADE;
 DROP TABLE IF EXISTS Country CASCADE;
+
+CREATE TABLE Language(
+	name varchar(2) NOT NULL,
+	constraint LanguagePK PRIMARY KEY (name)
+);
+
+CREATE TABLE Beer_Color(
+	id integer NOT NULL AUTO_INCREMENT,
+	constraint idBeerColorPK PRIMARY KEY (id)
+);
+ALTER TABLE Beer_Color AUTO_INCREMENT = 1;
+
+CREATE TABLE Translation_Beer_Color(
+	id integer NOT NULL AUTO_INCREMENT,
+	constraint idTranslationPK PRIMARY KEY (id),
+	name varchar(255) NOT NULL,
+    language varchar(2) NOT NULL,
+	constraint languageTranslationBeerColorFK FOREIGN KEY (language) REFERENCES Language (name),
+    item integer NOT NULL,
+	constraint itemTranslationBeerColorFK FOREIGN KEY (item) REFERENCES Beer_Color (id)
+);
+ALTER TABLE Translation_Beer_Color AUTO_INCREMENT = 1;
+
+CREATE TABLE Beer_Type(
+	id integer NOT NULL AUTO_INCREMENT,
+	constraint idBeerTypePK PRIMARY KEY (id)
+);
+ALTER TABLE Beer_Type AUTO_INCREMENT = 1;
+
+CREATE TABLE Translation_Beer_Type(
+	id integer NOT NULL AUTO_INCREMENT,
+	constraint idTranslationPK PRIMARY KEY (id),
+	name varchar(255) NOT NULL,
+    language varchar(2) NOT NULL,
+	constraint languageTranslationBeerTypeFK FOREIGN KEY (language) REFERENCES Language (name),
+    item integer NOT NULL,
+	constraint itemTranslationBeerTypeFK FOREIGN KEY (item) REFERENCES Beer_Type (id)
+);
+ALTER TABLE Translation_Beer_Type AUTO_INCREMENT = 1;
+
+CREATE TABLE Brewery(
+	id integer NOT NULL AUTO_INCREMENT,
+	constraint idBreweryPK PRIMARY KEY (id)
+);
+ALTER TABLE Brewery AUTO_INCREMENT = 1;
+
+CREATE TABLE Translation_Brewery(
+	id integer NOT NULL AUTO_INCREMENT,
+	constraint idTranslationPK PRIMARY KEY (id),
+	name varchar(255) NOT NULL,
+    language varchar(2) NOT NULL,
+	constraint languageTranslationBreweryFK FOREIGN KEY (language) REFERENCES Language (name),
+    item integer NOT NULL,
+	constraint itemTranslationBreweryFK FOREIGN KEY (item) REFERENCES Brewery (id)
+);
+ALTER TABLE Translation_Brewery AUTO_INCREMENT = 1;
+
+CREATE TABLE Country(
+	id integer NOT NULL AUTO_INCREMENT,
+	constraint idCountryPK PRIMARY KEY (id)
+);
+ALTER TABLE Country AUTO_INCREMENT = 1;
+
+CREATE TABLE Translation_Country(
+	id integer NOT NULL AUTO_INCREMENT,
+	constraint idTranslationPK PRIMARY KEY (id),
+	name varchar(255) NOT NULL,
+    language varchar(2) NOT NULL,
+	constraint languageTranslationCountryFK FOREIGN KEY (language) REFERENCES Language (name),
+    item integer NOT NULL,
+	constraint itemTranslationCountryFK FOREIGN KEY (item) REFERENCES Country (id)
+);
+ALTER TABLE Translation_Brewery AUTO_INCREMENT = 1;
+
+CREATE TABLE Beer(
+	name varchar(255) NOT NULL,
+	constraint namePK PRIMARY KEY (name),
+	description varchar(500),
+	alcoholPerc float NOT NULL,
+	capacityCl float NOT NULL,
+	price float NOT NULL,
+	brewery integer(255) NOT NULL,
+	constraint BreweryNameFK FOREIGN KEY (brewery) REFERENCES Brewery (id),
+	country integer NOT NULL,
+	constraint BeerCountryFK FOREIGN KEY (country) REFERENCES Country (id),
+	Beer_Type integer NOT NULL,
+	constraint BeerTypeNameFK FOREIGN KEY (Beer_Type) REFERENCES Beer_Type (id),
+	Beer_Color integer(255) NOT NULL,
+	constraint BeerColorFK FOREIGN KEY (Beer_Color) REFERENCES Beer_Color(id)
+);
 
 CREATE TABLE Promotion(
 	id integer NOT NULL AUTO_INCREMENT,
@@ -19,52 +114,11 @@ CREATE TABLE Promotion(
 );
 ALTER TABLE Promotion AUTO_INCREMENT = 1;
 
-CREATE TABLE BeerColor(
-	nameEn varchar(255) NOT NULL,
-	constraint nameColorEnPK PRIMARY KEY (nameEn),
-	nameFr varchar(255) NOT NULL
-);
-
-CREATE TABLE BeerType(
-	nameEn varchar(255) NOT NULL,
-	constraint typeNameEnPK PRIMARY KEY (nameEn),
-	nameFr varchar(255) NOT NULL
-);
-
-CREATE TABLE Brewery(
-	nameEn varchar(255) NOT NULL,
-	constraint nameEnPK PRIMARY KEY (nameEn),
-	nameFr varchar(255) NOT NULL
-);
-
-CREATE TABLE Country(
-	nameEn varchar(255) NOT NULL,
-	constraint nameEnCountryPK PRIMARY KEY (nameEn),
-	nameFr varchar(255) NOT NULL
-);
-
-CREATE TABLE Beer(
-	name varchar(255) NOT NULL,
-	constraint namePK PRIMARY KEY (name),
-	description varchar(500),
-	alcoholPerc float NOT NULL,
-	capacityCl float NOT NULL,
-	price float NOT NULL,
-	breweryName varchar(255) NOT NULL,
-	constraint BreweryNameFK FOREIGN KEY (breweryName) REFERENCES Brewery (nameEn),
-	countryName varchar(255) NOT NULL,
-	constraint CountryNameFK FOREIGN KEY (countryName) REFERENCES Country (nameEn),
-	beerTypeName varchar(255) NOT NULL,
-	constraint BeerTypeNameFK FOREIGN KEY (beerTypeName) REFERENCES BeerType (nameEn),
-	beerColor varchar(255) NOT NULL,
-	constraint BeerColorFK FOREIGN KEY (beerColor) REFERENCES BeerColor(nameEn)
-);
-
 CREATE TABLE Beer_Promotion(
 	beerName varchar(255) NOT NULL,
 	constraint beerNameFK FOREIGN KEY (beerName) REFERENCES Beer (name),
 	promotionId integer NOT NULL,
-	constraint beer_promotionPK PRIMARY KEY (promotionId, beerName),
+	constraint beerPromotionPK PRIMARY KEY (promotionId, beerName),
 	constraint promotionIdFK FOREIGN KEY (promotionId) REFERENCES Promotion (id)
 ); 
 
@@ -73,8 +127,8 @@ CREATE TABLE City(
 	constraint idPK PRIMARY KEY (id),
 	name varchar(255) NOT NULL,
 	postCode integer NOT NULL,
-	countryName varchar(255) NOT NULL,
-	constraint city_countryNameFK FOREIGN KEY (countryName) REFERENCES Country (nameEn)
+	country integer NOT NULL,
+	constraint cityCountryFK FOREIGN KEY (country) REFERENCES Country (id)
 );
 ALTER TABLE City AUTO_INCREMENT = 1;
 
@@ -107,7 +161,7 @@ CREATE TABLE Commande(
 );
 ALTER TABLE Commande AUTO_INCREMENT = 1;
 
-CREATE TABLE CommandeLine(
+CREATE TABLE Commande_Line(
 	id integer NOT NULL AUTO_INCREMENT,
 	constraint idPK PRIMARY KEY (id),
 	realPrice float NOT NULL,
@@ -116,4 +170,4 @@ CREATE TABLE CommandeLine(
 	commandeId integer NOT NULL,
 	constraint commandeIdFK FOREIGN KEY (commandeId) REFERENCES Commande (id)
 );
-ALTER TABLE CommandeLine AUTO_INCREMENT = 1;
+ALTER TABLE Commande_Line AUTO_INCREMENT = 1;

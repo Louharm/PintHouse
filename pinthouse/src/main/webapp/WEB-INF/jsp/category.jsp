@@ -10,17 +10,17 @@
     <div id="menu">
         <ul>
             <div id="category">
-                <li><button onclick="window.location.href ='<c:url value="/category/country"/>'">Pays</button></li>
-                <li><button onclick="window.location.href ='<c:url value="/category/brewery"/>'">Brasserie</button></li>
-                <li><button onclick="window.location.href ='<c:url value="/category/beerType"/>'">Type de bière</button></li>
-                <li><button onclick="window.location.href ='<c:url value="/category/beerColor"/>'">Couleur de bière</button></li>
+                <li><button onclick="window.location.href ='<c:url value="/category/country"/>'"><spring:message code="Country"/></button></li>
+                <li><button onclick="window.location.href ='<c:url value="/category/brewery"/>'"><spring:message code="Brewery"/></button></li>
+                <li><button onclick="window.location.href ='<c:url value="/category/beerType"/>'"><spring:message code="BeerType"/></button></li>
+                <li><button onclick="window.location.href ='<c:url value="/category/beerColor"/>'"><spring:message code="BeerColor"/></button></li>
             </div>
         </ul>
     </div>
     <div id="list">
         <ul>
             <c:forEach items="${listElemCategory}" var="elem">
-                <li><button onclick="window.location.href ='<c:url value="/category/${category}/${elem.nameEn}"/>'">${elem.nameFr}</button></li>
+                <li><button onclick="window.location.href ='<c:url value="/category/${category}/${elem.item}"/>'">${elem.name}</button></li>
             </c:forEach>
         </ul>
     </div>
@@ -30,9 +30,9 @@
                 <div class="beerDisplay">
                     <h4>${elem.name}</h4>
                     <img src="" alt="Image de biere">
-                    <p>${elem.breweryName}</p>
-                    <p>${elem.beerTypeName}</p>
-                    <p>${elem.countryName}</p>
+                    <p>${elem.brewery}</p>
+                    <p>${elem.beerType}</p>
+                    <p>${elem.country}</p>
                     <p>${elem.beerColor}</p>
                     <p>${elem.alcoholPerc}%</p>
                     <p id="priceTag">${elem.price}€</p>

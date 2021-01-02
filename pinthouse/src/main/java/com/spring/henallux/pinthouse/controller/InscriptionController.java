@@ -24,9 +24,9 @@ import java.util.regex.Pattern;
 @Controller
 @RequestMapping(value="/inscription")
 public class InscriptionController extends SuperController {
-    private UserDataAccess userDataAccess;
-    private CityDataAccess cityDataAccess;
-    private CountryDataAccess countryDataAccess;
+    private final UserDataAccess userDataAccess;
+    private final CityDataAccess cityDataAccess;
+    private final CountryDataAccess countryDataAccess;
     ArrayList<Country> countries;
 
     @Autowired
@@ -34,7 +34,6 @@ public class InscriptionController extends SuperController {
         this.userDataAccess = userDataAccess;
         this.cityDataAccess = cityDataAccess;
         this.countryDataAccess = countryDataAccess;
-        countries = countryDataAccess.getAllCountries();
     }
 
     @ModelAttribute(Constants.CURRENT_USER)
@@ -44,23 +43,23 @@ public class InscriptionController extends SuperController {
 
     @RequestMapping (method = RequestMethod.GET)
     public String home (Model model){
+        countries = countryDataAccess.getAllCountries(getCurrentLanguage());
         model.addAttribute("countries", countries);
         model.addAttribute("title","Pinthouse");
-        model.addAttribute(Constants.CURRENT_USER, new User());
+        model.addAttribute("userForm", new User());
         return "integrated:inscription";
     }
 
     @RequestMapping (value="/send",method = RequestMethod.POST)
-    public String getFormData(Model model, @Valid @ModelAttribute(value=Constants.CURRENT_USER) User user, final BindingResult errors){
+    public String getFormData(Model model, @Valid @ModelAttribute(value="userForm") User user, final BindingResult errors){
         if(!errors.hasErrors()){
             if(user.getConfirmPassword().equals(user.getPassword())){
-                Country country = countryDataAccess.getCountryByNameFr(user.getCountry());
-                City city = new City(user.getCity(), user.getPostCode(), country.getNameEn());
-                City cityFound = cityDataAccess.getCityByNameAndCountry(user.getCity(), country.getNameEn());
+                City cityFound = cityDataAccess.getCityByNameAndCountry(user.getCity(), user.getCountryId());
                 if(cityFound == null){
+                    City city = new City(user.getCity(), user.getPostCode(), user.getCountryId());
                     city.setId(0);
                     cityDataAccess.save(city);
-                    cityFound = cityDataAccess.getCityByNameAndCountry(user.getCity(), country.getNameEn());
+                    cityFound = cityDataAccess.getCityByNameAndCountry(user.getCity(), user.getCountryId());
                 }
 
                 user.setAuthorities("ROLE_USER");
@@ -75,7 +74,8 @@ public class InscriptionController extends SuperController {
                 return "redirect:/authenticated";
             }
         }
-        model.addAttribute("title", "Page d'inscription");
+        model.addAttribute("title", "Pinthouse");
+        model.addAttribute("userForm", user);
         model.addAttribute("countries", countries);
         return "integrated:inscription";
     }

@@ -1,7 +1,7 @@
 package com.spring.henallux.pinthouse.dataAccess.dao;
 
-import com.spring.henallux.pinthouse.dataAccess.entity.BeerTypeEntity;
-import com.spring.henallux.pinthouse.dataAccess.repository.BeerTypeRepository;
+import com.spring.henallux.pinthouse.dataAccess.entity.TranslationBeerTypeEntity;
+import com.spring.henallux.pinthouse.dataAccess.repository.TranslationBeerTypeRepository;
 import com.spring.henallux.pinthouse.dataAccess.util.ProviderConverter;
 import com.spring.henallux.pinthouse.model.BeerType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,19 +15,19 @@ import java.util.List;
 @Transactional
 public class BeerTypeDAO implements BeerTypeDataAccess{
     private ProviderConverter converter;
-    private BeerTypeRepository beerTypeRepository;
+    private TranslationBeerTypeRepository translationBeerTypeRepository;
 
     @Autowired
-    public BeerTypeDAO(BeerTypeRepository beerTypeRepository, ProviderConverter converter){
-        this.beerTypeRepository = beerTypeRepository;
+    public BeerTypeDAO(ProviderConverter converter, TranslationBeerTypeRepository translationBeerTypeRepository){
+        this.translationBeerTypeRepository = translationBeerTypeRepository;
         this.converter = converter;
     }
     @Override
-    public ArrayList<BeerType> getAllBeerType(){
-        List<BeerTypeEntity> beerTypeEntities = beerTypeRepository.findAll();
+    public ArrayList<BeerType> getAllBeerType(String language){
+        List<TranslationBeerTypeEntity> translationEntities = translationBeerTypeRepository.findAllByLanguage(language);
         ArrayList<BeerType> beerTypes = new ArrayList<>();
-        for (BeerTypeEntity beerTypeEntity: beerTypeEntities) {
-            beerTypes.add(converter.beerTypeEntityToModel(beerTypeEntity));
+        for (TranslationBeerTypeEntity translationEntity: translationEntities) {
+            beerTypes.add(converter.beerTypeEntityToModel(translationEntity));
         }
         return beerTypes;
     }
