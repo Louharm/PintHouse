@@ -24,6 +24,7 @@
                             <th>${elem.price} €</th>
                             <th>${basket.get(elem.name)}</th>
                             <th>${elem.price * basket.get(elem.name)} €</th>
+                            <th><button onclick="window.location.href ='<c:url value="/cart/delete/${elem.name}"/>'">Supprimer</button></th>
                         </tr>
                     </c:forEach>
                     <tr class="footer">
@@ -33,8 +34,7 @@
                     </tr>
                 </tbody>
             </table>
-
-            <button>Valider ma commande</button>
+            <button onclick="window.location.href ='<c:url value="/cart/send"/>'">Valider ma commande</button>
         </div>
     </c:if>
     <c:if test="${basket.size() == 0}">

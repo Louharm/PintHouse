@@ -7,17 +7,14 @@ import com.spring.henallux.pinthouse.model.Beer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-@RequestMapping(value="/cart")
+@RequestMapping(value= {"/cart", "/cart/delete/{name}"})
 @SessionAttributes(Constants.BASKET)
 public class CartController extends SuperController {
     private BeerDataAccess beerDataAccess;
@@ -35,11 +32,21 @@ public class CartController extends SuperController {
             total += beer.getPrice() * basket.get(name);
             beers.add(beer);
         }
-        Math.round(total * 100.0);
         model.addAttribute("total", total);
         model.addAttribute("beers", beers);
         model.addAttribute("basket", basket);
         model.addAttribute("title","Pinthouse");
         return "integrated:cart";
+    }
+
+    @RequestMapping (value="/send", method = RequestMethod.POST)
+    public String getCart(Model model, @ModelAttribute(Constants.BASKET) HashMap<String, Integer> basket){
+        return "redirect:/home";
+    }
+
+    @RequestMapping (value="/delete", method = RequestMethod.POST)
+    public String deleteElemCart(@PathVariable(required = true) final String name, Model model, @ModelAttribute(Constants.BASKET) HashMap<String, Integer> basket){
+        basket.remove(name);
+        return "redirect:/home";
     }
 }
