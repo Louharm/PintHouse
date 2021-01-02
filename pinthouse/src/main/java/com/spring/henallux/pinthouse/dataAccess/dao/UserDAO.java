@@ -26,6 +26,6 @@ public class UserDAO implements UserDataAccess {
     }
     public User findByUsername(String username){
         UserEntity userEntity = userRepository.findByUsername(username);
-        return converter.userEntityToModel(userEntity);
+        return (userEntity == null ? null : converter.userEntityToModel(userEntity));
     }
 }

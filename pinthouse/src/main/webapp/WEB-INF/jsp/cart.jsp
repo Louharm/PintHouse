@@ -24,7 +24,7 @@
                             <th>${elem.price} €</th>
                             <th>${basket.get(elem.name)}</th>
                             <th>${elem.price * basket.get(elem.name)} €</th>
-                            <th><button onclick="window.location.href ='<c:url value="/cart/delete/${elem.name}"/>'">Supprimer</button></th>
+                            <th><button onclick="window.location.href ='<c:url value="/cart/delete/${elem.name}"/>'"><spring:message code="Remove"/></button></th>
                         </tr>
                     </c:forEach>
                     <tr class="footer">
@@ -34,7 +34,7 @@
                     </tr>
                 </tbody>
             </table>
-            <button onclick="window.location.href ='<c:url value="/cart/send"/>'"><spring:message code="ValidateOrder"/></button>
+            <button onclick="window.location.href ='<c:url value="/paypal"/>'"><spring:message code="ValidateOrder"/></button>
         </div>
     </c:if>
     <c:if test="${basket.size() == 0}">

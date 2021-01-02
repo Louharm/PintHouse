@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public interface BeerDataAccess {
     ArrayList<Beer> getAllBeers(String language);
 
-    ArrayList<Beer> getAllBeersByCategory(String categoryName, String elem, Integer beerType, String language);
+    ArrayList<Beer> getAllBeersByCategory(String categoryName, Integer elem, String language);
 
     Beer getBeerByName(String name, String language);
 }

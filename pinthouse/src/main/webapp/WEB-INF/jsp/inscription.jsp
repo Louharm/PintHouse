@@ -20,6 +20,9 @@
         <form:label path="username"><spring:message code="Mail"/> :</form:label>
         <form:input path="username"/>
         <form:errors path="username"/>
+        <c:if test="${errorUserName}">
+            <spring:message code = "userNameExist" />
+        </c:if>
         <br/>
         <form:label path="password"><spring:message code="Password"/> :</form:label>
         <form:password path="password"/>

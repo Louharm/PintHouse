@@ -56,7 +56,7 @@ public class BeerDAO implements BeerDataAccess {
     }
 
     @Override
-    public ArrayList<Beer> getAllBeersByCategory(String categoryName, String elem, Integer beerType, String language) {
+    public ArrayList<Beer> getAllBeersByCategory(String categoryName, Integer elem, String language) {
         List<BeerEntity> beerEntities;
         categoryName = categoryName.toLowerCase();
         switch (categoryName){
@@ -64,13 +64,13 @@ public class BeerDAO implements BeerDataAccess {
                 beerEntities = beerRepository.getAllByCountry(elem);
                 break;
             case "brewery" :
-                beerEntities = beerRepository.getAllByBrewery(beerType);
+                beerEntities = beerRepository.getAllByBrewery(elem);
                 break;
             case "beercolor" :
-                beerEntities = beerRepository.getAllByBeerColor(beerType);
+                beerEntities = beerRepository.getAllByBeerColor(elem);
                 break;
             case "beertype" :
-                beerEntities = beerRepository.getAllByBeerType(beerType);
+                beerEntities = beerRepository.getAllByBeerType(elem);
                 break;
             default:
                 beerEntities = null;

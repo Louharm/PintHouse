@@ -51,11 +51,7 @@ public class CategoryController extends SuperController {
         }
         ArrayList<Beer> beers;
         if(elemCategory != null){
-            if(name.equals("country")){
-                beers = beerDataAccess.getAllBeersByCategory(name, elemCategory, null,langue);
-            }else{
-                beers = beerDataAccess.getAllBeersByCategory(name, null, Integer.valueOf(elemCategory),langue);
-            }
+            beers = beerDataAccess.getAllBeersByCategory(name, Integer.valueOf(elemCategory),langue);
         }else{
             beers = beerDataAccess.getAllBeers(langue);
         }

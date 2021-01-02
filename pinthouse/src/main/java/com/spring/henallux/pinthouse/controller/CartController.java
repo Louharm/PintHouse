@@ -23,12 +23,15 @@ public class CartController extends SuperController {
     }
 
     @RequestMapping (method = RequestMethod.GET)
-    public String home (Model model, @ModelAttribute(Constants.BASKET) HashMap<String, Integer> basket){
+    public String home (@PathVariable (required = false) String name, Model model, @ModelAttribute(Constants.BASKET) HashMap<String, Integer> basket){
+        if(name != null){
+            basket.remove(name);
+        }
         ArrayList<Beer> beers = new ArrayList<>();
         Double total = 0.0;
-        for (String name: basket.keySet()) {
-            Beer beer = beerDataAccess.getBeerByName(name,getCurrentLanguage());
-            total += beer.getPrice() * basket.get(name);
+        for (String nameBeer: basket.keySet()) {
+            Beer beer = beerDataAccess.getBeerByName(nameBeer,getCurrentLanguage());
+            total += beer.getPrice() * basket.get(nameBeer);
             beers.add(beer);
         }
         model.addAttribute("total", total);
@@ -36,16 +39,5 @@ public class CartController extends SuperController {
         model.addAttribute("basket", basket);
         model.addAttribute("title","Pinthouse");
         return "integrated:cart";
-    }
-
-    @RequestMapping (value="/send", method = RequestMethod.POST)
-    public String getCart(Model model, @ModelAttribute(Constants.BASKET) HashMap<String, Integer> basket){
-        return "redirect:/home";
-    }
-
-    @RequestMapping (value="/delete", method = RequestMethod.POST)
-    public String deleteElemCart(@PathVariable(required = true) final String name, Model model, @ModelAttribute(Constants.BASKET) HashMap<String, Integer> basket){
-        basket.remove(name);
-        return "redirect:/home";
     }
 }

@@ -93,8 +93,11 @@ CREATE TABLE Beer(
 	constraint namePK PRIMARY KEY (name),
 	description varchar(500),
 	alcoholPerc float NOT NULL,
+    CONSTRAINT alcoholdPerc_ck CHECK (alcoholPerc >= 0 and alcoholPerc <= 100),
 	capacityCl float NOT NULL,
+    CONSTRAINT capacity_ck CHECK (capacityCl > 0),
 	price float NOT NULL,
+    CONSTRAINT price_ck CHECK (price > 0),
 	brewery integer(255) NOT NULL,
 	constraint BreweryNameFK FOREIGN KEY (brewery) REFERENCES Brewery (id),
 	country integer NOT NULL,
@@ -128,7 +131,8 @@ CREATE TABLE City(
 	name varchar(255) NOT NULL,
 	postCode integer NOT NULL,
 	country integer NOT NULL,
-	constraint cityCountryFK FOREIGN KEY (country) REFERENCES Country (id)
+	constraint cityCountryFK FOREIGN KEY (country) REFERENCES Country (id),
+    CONSTRAINT cityname_ck check(name not like ('[0-9]%'))
 );
 ALTER TABLE City AUTO_INCREMENT = 1;
 
@@ -148,7 +152,12 @@ CREATE TABLE User(
     non_expired boolean,
     non_locked boolean,
     credentials_non_expired boolean,
-    enabled boolean
+    enabled boolean,
+    CONSTRAINT email_ck check(email like ('%@%.%')),
+	CONSTRAINT phonenumber_ck check(phonenumber like ('+__ ___/__.__.__')),
+    constraint lastname_ck check (lastname not like ('[0-9]%')),
+    CONSTRAINT firstname_ck check(firstname not like ('[0-9]%')),
+    CONSTRAINT street_ck check(street not like ('[0-9]%'))
 );
 ALTER TABLE User AUTO_INCREMENT = 1;
 
@@ -157,7 +166,7 @@ CREATE TABLE Commande(
 	constraint idPK PRIMARY KEY (id),
 	commandeDate date NOT NULL,
 	userId integer NOT NULL,
-	constraint userIdFK FOREIGN KEY (userId) REFERENCES User(id) 
+	constraint userIdFK FOREIGN KEY (userId) REFERENCES User(id)
 );
 ALTER TABLE Commande AUTO_INCREMENT = 1;
 
@@ -168,6 +177,7 @@ CREATE TABLE Commande_Line(
 	beerName varchar(255) NOT NULL,
 	constraint beerFK FOREIGN KEY (beerName) REFERENCES Beer (name),
 	commandeId integer NOT NULL,
-	constraint commandeIdFK FOREIGN KEY (commandeId) REFERENCES Commande (id)
+	constraint commandeIdFK FOREIGN KEY (commandeId) REFERENCES Commande (id),
+    CONSTRAINT realprice_ck check(realPrice > 0)
 );
 ALTER TABLE Commande_Line AUTO_INCREMENT = 1;

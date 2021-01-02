@@ -53,25 +53,30 @@ public class InscriptionController extends SuperController {
     @RequestMapping (value="/send",method = RequestMethod.POST)
     public String getFormData(Model model, @Valid @ModelAttribute(value="userForm") User user, final BindingResult errors){
         if(!errors.hasErrors()){
-            if(user.getConfirmPassword().equals(user.getPassword())){
-                City cityFound = cityDataAccess.getCityByNameAndCountry(user.getCity(), user.getCountryId());
-                if(cityFound == null){
-                    City city = new City(user.getCity(), user.getPostCode(), user.getCountryId());
-                    city.setId(0);
-                    cityDataAccess.save(city);
-                    cityFound = cityDataAccess.getCityByNameAndCountry(user.getCity(), user.getCountryId());
-                }
+            if(userDataAccess.findByUsername(user.getUsername()) == null){
+                if(user.getConfirmPassword().equals(user.getPassword())){
+                    City cityFound = cityDataAccess.getCityByNameAndCountry(user.getCity(), user.getCountryId());
+                    if(cityFound == null){
+                        City city = new City(user.getCity(), user.getPostCode(), user.getCountryId());
+                        city.setId(0);
+                        cityDataAccess.save(city);
+                        cityFound = cityDataAccess.getCityByNameAndCountry(user.getCity(), user.getCountryId());
+                    }
 
-                user.setAuthorities("ROLE_USER");
-                user.setAccountNonLocked(true);
-                user.setAccountNonExpired(true);
-                user.setCredentialsNonExpired(true);
-                user.setEnabled(true);
-                user.setCityId(cityFound.getId());
-                user.setIdUser(0);
-                user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-                userDataAccess.save(user);
-                return "redirect:/authenticated";
+                    user.setAuthorities("ROLE_USER");
+                    user.setAccountNonLocked(true);
+                    user.setAccountNonExpired(true);
+                    user.setCredentialsNonExpired(true);
+                    user.setEnabled(true);
+                    user.setCityId(cityFound.getId());
+                    user.setIdUser(0);
+                    user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+                    userDataAccess.save(user);
+                    return "redirect:/authenticated";
+                }
+            }
+            else {
+                model.addAttribute("errorUserName", true);
             }
         }
         model.addAttribute("title", "Pinthouse");

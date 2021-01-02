@@ -4,6 +4,6 @@
 <head>
 </head>
 <body>
-    <p>Merci de t'être connecté/inscrit à ce site ${pageContext.request.userPrincipal.principal.firstName}</p>
+    <p><spring:message code = "ThanksYou"/>${pageContext.request.userPrincipal.principal.firstName}</p>
 </body>
 </html>

@@ -1,12 +1,12 @@
 package com.spring.henallux.pinthouse.model;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.GregorianCalendar;
@@ -30,25 +30,25 @@ public class User implements UserDetails {
     private Integer idUser;
 
     @NotEmpty
-    @Pattern(regexp="[^0-9]*",message="ne doit avoir que des lettres")
+    @Pattern(regexp="[^0-9]*")
     private String lastName;
     @NotEmpty
-    @Pattern(regexp="[^0-9]*",message="ne doit avoir que des lettres")
+    @Pattern(regexp="[^0-9]*")
     private String firstName;
     @NotEmpty
     private String confirmPassword;
     @NotEmpty
-    @Pattern(regexp="[^0-9]*",message="ne doit avoir que des lettres")
+    @Pattern(regexp="[^0-9]*")
     private String street;
     @NotEmpty
     private String numHouse;
-    @NotEmpty
-    @Pattern(regexp="\\+\\d{2} \\d{3}/\\d{2}\\.\\d{2}\\.\\d{2}",message="ne doit être que du style indiqué")
+    @Pattern(regexp="(\\+\\d{2} \\d{3}/\\d{2}\\.\\d{2}\\.\\d{2})|()")
     private String phoneNumber;
     @NotEmpty
-    @Pattern(regexp="[^0-9]*",message="ne doit avoir que des lettres")
+    @Pattern(regexp="[^0-9]*")
     private String city;
     @NotEmpty
+    @Length(max = 10)
     private String postCode;
     @NotNull
     private Integer countryId;
