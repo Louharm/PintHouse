@@ -55,12 +55,10 @@ public class InscriptionController extends SuperController {
         if(!errors.hasErrors()){
             if(userDataAccess.findByUsername(user.getUsername()) == null){
                 if(user.getConfirmPassword().equals(user.getPassword())){
-                    City cityFound = cityDataAccess.getCityByNameAndCountry(user.getCity(), user.getCountryId());
-                    if(cityFound == null){
-                        City city = new City(user.getCity(), user.getPostCode(), user.getCountryId());
-                        city.setId(0);
-                        cityDataAccess.save(city);
-                        cityFound = cityDataAccess.getCityByNameAndCountry(user.getCity(), user.getCountryId());
+                    City city = cityDataAccess.getCityByNameAndCountry(user.getCity(), user.getCountryId());
+                    if(city == null){
+                        city = new City(user.getCity(), user.getPostCode(), user.getCountryId());
+                        city = cityDataAccess.save(city);
                     }
 
                     user.setAuthorities("ROLE_USER");
@@ -68,7 +66,7 @@ public class InscriptionController extends SuperController {
                     user.setAccountNonExpired(true);
                     user.setCredentialsNonExpired(true);
                     user.setEnabled(true);
-                    user.setCityId(cityFound.getId());
+                    user.setCityId(city.getId());
                     user.setIdUser(0);
                     user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
                     userDataAccess.save(user);

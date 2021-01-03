@@ -1,22 +1,21 @@
 package com.spring.henallux.pinthouse.dataAccess.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity(name = "Command_Line")
 public class CommandLineEntity {
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "realprice")
+    @Column(name = "real_price")
     private Double realPrice;
 
-    @Column(name = "beername")
+    @Column(name = "beer_name")
     private String beerName;
 
-    @Column(name = "commandeid")
+    @Column(name = "command_id")
     private Integer commandId;
 
     public CommandLineEntity(){

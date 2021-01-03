@@ -28,8 +28,9 @@ public class CityDAO implements CityDataAccess{
     }
 
     @Override
-    public void save(City city) {
+    public City save(City city) {
         CityEntity cityEntity = converter.cityModelToEntity(city);
         cityRepository.save(cityEntity);
+        return converter.cityEntityToModel(cityEntity);
     }
 }

@@ -34,7 +34,7 @@
                     </tr>
                 </tbody>
             </table>
-            <button onclick="window.location.href ='<c:url value="/paypal"/>'"><spring:message code="ValidateOrder"/></button>
+            <button onclick="window.location.href ='<c:url value="cart/paypal"/>'"><spring:message code="ValidateOrder"/></button>
         </div>
     </c:if>
     <c:if test="${basket.size() == 0}">

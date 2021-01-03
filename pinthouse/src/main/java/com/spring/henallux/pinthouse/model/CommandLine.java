@@ -1,8 +1,6 @@
 package com.spring.henallux.pinthouse.model;
 
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 
 public class CommandLine {
     private Integer id;
@@ -12,8 +10,7 @@ public class CommandLine {
     @NotNull
     private Integer quantity;
 
-    public CommandLine(Integer id, Double realPrice, String beerName, Integer commandId, Integer quantity) {
-        this.id = id;
+    public CommandLine(Double realPrice, String beerName, Integer commandId, Integer quantity) {
         this.realPrice = realPrice;
         this.beerName = beerName;
         this.commandId = commandId;

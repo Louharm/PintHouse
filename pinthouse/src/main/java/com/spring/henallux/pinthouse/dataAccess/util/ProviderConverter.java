@@ -40,8 +40,10 @@ public class ProviderConverter {
         return mapper.map(cityEntity,City.class);
     }
 
-    public CommandLineEntity commandLineModelToEntity(CommandLine commandLine){
-        return mapper.map(commandLine, CommandLineEntity.class);
+    public CommandLineEntity commandLineModelToEntity(CommandLine commandLine, Integer orderId){
+        CommandLineEntity commandLineEntity = mapper.map(commandLine, CommandLineEntity.class);
+        commandLineEntity.setCommandId(orderId);
+        return commandLineEntity;
     }
 
     public BeerColor beerColorEntityToModel(TranslationBeerColorEntity beerColorEntity){
@@ -68,5 +70,10 @@ public class ProviderConverter {
         beer.setBrewery(breweryEntity.getName());
         beer.setCountry(countryEntity.getName());
         return beer;
+    }
+
+    public OrderEntity orderModelToOrderEntity(Order order){
+        OrderEntity orderEntity = mapper.map(order, OrderEntity.class);
+        return orderEntity;
     }
 }

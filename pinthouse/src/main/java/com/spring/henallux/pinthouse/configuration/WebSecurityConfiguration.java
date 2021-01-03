@@ -19,14 +19,14 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
             "/inscription/send",
             "/category/**",
             "/home",
-            "/cart",
             "/inscription",
             "/aboutUs",
             "/contact",
             "/css/**",
             "/images/**",
             "/beerDetails/**",
-            "/cart/delete/**"
+            "/cart/delete/**",
+            "/cart"
     };
     private static final String[] AUTHORIZED_REQUESTS_ADMIN = new String[]{"/admin"};
 

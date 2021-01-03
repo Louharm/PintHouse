@@ -1,5 +1,5 @@
 DROP TABLE IF EXISTS Beer_Promotion CASCADE;
-DROP TABLE IF EXISTS Commande_Line CASCADE;
+DROP TABLE IF EXISTS Command_Line CASCADE;
 DROP TABLE IF EXISTS Beer CASCADE;
 DROP TABLE IF EXISTS Promotion CASCADE;
 DROP TABLE IF EXISTS Translation_Beer_Color CASCADE;
@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS Language CASCADE;
 DROP TABLE IF EXISTS Beer_Color CASCADE;
 DROP TABLE IF EXISTS Beer_Type CASCADE;
 DROP TABLE IF EXISTS Brewery CASCADE;
-DROP TABLE IF EXISTS Commande CASCADE;
+DROP TABLE IF EXISTS Command CASCADE;
 DROP TABLE IF EXISTS User CASCADE;
 DROP TABLE IF EXISTS City CASCADE;
 DROP TABLE IF EXISTS Country CASCADE;
@@ -161,23 +161,23 @@ CREATE TABLE User(
 );
 ALTER TABLE User AUTO_INCREMENT = 1;
 
-CREATE TABLE Commande(
+CREATE TABLE Command(
 	id integer NOT NULL AUTO_INCREMENT,
 	constraint idPK PRIMARY KEY (id),
-	commandeDate date NOT NULL,
-	userId integer NOT NULL,
-	constraint userIdFK FOREIGN KEY (userId) REFERENCES User(id)
+	order_date date NOT NULL,
+	user_id integer NOT NULL,
+	constraint userIdFK FOREIGN KEY (user_id) REFERENCES User(id)
 );
-ALTER TABLE Commande AUTO_INCREMENT = 1;
+ALTER TABLE Command AUTO_INCREMENT = 1;
 
-CREATE TABLE Commande_Line(
+CREATE TABLE Command_Line(
 	id integer NOT NULL AUTO_INCREMENT,
 	constraint idPK PRIMARY KEY (id),
-	realPrice float NOT NULL,
-	beerName varchar(255) NOT NULL,
-	constraint beerFK FOREIGN KEY (beerName) REFERENCES Beer (name),
-	commandeId integer NOT NULL,
-	constraint commandeIdFK FOREIGN KEY (commandeId) REFERENCES Commande (id),
-    CONSTRAINT realprice_ck check(realPrice > 0)
+	real_price float NOT NULL,
+	beer_name varchar(255) NOT NULL,
+	constraint beerFK FOREIGN KEY (beer_name) REFERENCES Beer (name),
+	command_id integer NOT NULL,
+	constraint commandIdFK FOREIGN KEY (command_id) REFERENCES Command (id),
+    CONSTRAINT realprice_ck check(real_price > 0)
 );
-ALTER TABLE Commande_Line AUTO_INCREMENT = 1;
+ALTER TABLE Command_Line AUTO_INCREMENT = 1;
