@@ -37,6 +37,18 @@ public class BeerEntity {
     public BeerEntity() {
     }
 
+    public BeerEntity(String name, String description, Double alcoholPerc, Double capacityCl, Double price, Integer brewery, Integer country, Integer beerType, Integer beerColor) {
+        this.name = name;
+        this.description = description;
+        this.alcoholPerc = alcoholPerc;
+        this.capacityCl = capacityCl;
+        this.price = price;
+        this.brewery = brewery;
+        this.country = country;
+        this.beerType = beerType;
+        this.beerColor = beerColor;
+    }
+
     public Double getCapacityCl() {
         return capacityCl;
     }

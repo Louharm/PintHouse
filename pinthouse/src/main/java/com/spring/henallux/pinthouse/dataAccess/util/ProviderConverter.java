@@ -71,6 +71,9 @@ public class ProviderConverter {
         beer.setCountry(countryEntity.getName());
         return beer;
     }
+    public Beer beerEntityToBeerModel(BeerEntity beerEntity){
+        return mapper.map(beerEntity, Beer.class);
+    }
 
     public OrderEntity orderModelToOrderEntity(Order order){
         OrderEntity orderEntity = mapper.map(order, OrderEntity.class);

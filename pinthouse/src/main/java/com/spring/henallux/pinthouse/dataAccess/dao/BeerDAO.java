@@ -87,4 +87,17 @@ public class BeerDAO implements BeerDataAccess {
         TranslationCountryEntity translationCountryEntity = translationCountryRepository.findByLanguageAndItem(language, beerEntity.getCountry());
         return converter.beerEntityToBeerModel(beerEntity, translationBeerTypeEntity, translationBeerColorEntity, translationBreweryEntity, translationCountryEntity);
     }
+
+    public Beer getBeerForTest(String name){
+        BeerEntity beerEntity = beerRepository.getByName(name);
+        return converter.beerEntityToBeerModel(beerEntity);
+    }
+    public ArrayList<Beer> getAllBeerForTest(){
+        List<BeerEntity> beerEntities = beerRepository.findAll();
+        ArrayList<Beer> beers = new ArrayList<>();
+        for (BeerEntity beerEntity:beerEntities) {
+            beers.add(converter.beerEntityToBeerModel(beerEntity));
+        }
+        return beers;
+    }
 }
