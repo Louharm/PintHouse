@@ -38,7 +38,7 @@ public class BeerDetailsController extends SuperController {
 
     @RequestMapping (value="/send", method = RequestMethod.POST)
     public String getFormData(@PathVariable("name") String name, Model model, @ModelAttribute(Constants.BASKET) HashMap<String, Integer> basket, @Valid @ModelAttribute(value = Constants.COMMAND_LINE) CommandLine commandLine, final BindingResult errors){
-        if(!errors.hasErrors()){
+        if(basket != null && !errors.hasErrors()){
             if(basket.containsKey(name)){
                 int quantity = basket.get(name);
                 basket.replace(name, commandLine.getQuantity() + quantity);

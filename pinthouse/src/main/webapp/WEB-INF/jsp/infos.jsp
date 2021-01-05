@@ -5,6 +5,6 @@
 <head>
 </head>
 <body>
-<p>Infos</p>
+<p><spring:message code="info"/></p>
 </body>
 </html>
