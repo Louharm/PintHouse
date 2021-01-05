@@ -1,3 +1,4 @@
 # PintHouse
-Project for "Développement avancé d'application web"
-Benjamin Delaive and Louise Harmand Piérard
+##Project for "Développement avancé d'application web"
+###By Benjamin Delaive and Louise Harmand Piérard
+For initialisation of the database, we have to execute the both files everytime.

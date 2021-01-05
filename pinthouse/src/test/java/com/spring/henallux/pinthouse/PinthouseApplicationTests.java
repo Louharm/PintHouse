@@ -28,7 +28,6 @@ public class PinthouseApplicationTests {
 
 	@Before
 	public void setUp() throws Exception{
-
 		beerDAO = new BeerDAO(new ProviderConverter(), beerRepository,null,null,null,null);
 	}
 
