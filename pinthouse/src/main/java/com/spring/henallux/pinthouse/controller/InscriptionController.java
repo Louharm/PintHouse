@@ -52,7 +52,7 @@ public class InscriptionController extends SuperController {
 
     @RequestMapping (value="/send",method = RequestMethod.POST)
     public String getFormData(Model model, @Valid @ModelAttribute(value="userForm") User user, final BindingResult errors){
-        if(!errors.hasErrors()){
+        if(user != null && !errors.hasErrors()){
             if(userDataAccess.findByUsername(user.getUsername()) == null){
                 if(user.getConfirmPassword().equals(user.getPassword())){
                     City city = cityDataAccess.getCityByNameAndCountry(user.getCity(), user.getCountryId());

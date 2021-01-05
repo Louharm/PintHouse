@@ -33,18 +33,20 @@ public class CartController extends SuperController {
 
     @RequestMapping (method = RequestMethod.GET)
     public String home (@PathVariable (required = false) String name, Model model, @ModelAttribute(Constants.BASKET) HashMap<String, Integer> basket){
-        if(name != null){
-            basket.remove(name);
-        }
-        ArrayList<Beer> beers = new ArrayList<>();
-        total = 0.0;
-        for (String nameBeer: basket.keySet()) {
-            Beer beer = beerDataAccess.getBeerByName(nameBeer,getCurrentLanguage());
-            total += beer.getPrice() * basket.get(nameBeer);
-            beers.add(beer);
+        if (basket != null) {
+            if (name != null) {
+                basket.remove(name);
+            }
+            ArrayList<Beer> beers = new ArrayList<>();
+            total = 0.0;
+            for (String nameBeer : basket.keySet()) {
+                Beer beer = beerDataAccess.getBeerByName(nameBeer, getCurrentLanguage());
+                total += beer.getPrice() * basket.get(nameBeer);
+                beers.add(beer);
+            }
+            model.addAttribute("beers", beers);
         }
         model.addAttribute("total", total);
-        model.addAttribute("beers", beers);
         model.addAttribute("basket", basket);
         model.addAttribute("title","Pinthouse");
         return "integrated:cart";
@@ -52,18 +54,20 @@ public class CartController extends SuperController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/paypal")
     public String paypal(Model model, @ModelAttribute(Constants.BASKET) HashMap<String, Integer> basket, Authentication authentication){
-        model.addAttribute("title","Pinthouse");
+        if (basket != null) {
+            ArrayList<CommandLine> commandLines = new ArrayList<>();
+            for (String nameBeer : basket.keySet()) {
+                Beer beer = beerDataAccess.getBeerByName(nameBeer, getCurrentLanguage());
+                commandLines.add(new CommandLine(beer.getPrice(), beer.getName(), 0, basket.get(nameBeer)));
+            }
 
-        ArrayList<CommandLine> commandLines = new ArrayList<>();
-        for (String nameBeer: basket.keySet()) {
-            Beer beer = beerDataAccess.getBeerByName(nameBeer,getCurrentLanguage());
-            commandLines.add(new CommandLine(beer.getPrice(),beer.getName(),0, basket.get(nameBeer)));
+            User user = (User) authentication.getPrincipal();
+            orderDataAccess.save(new Order(new Date(), user.getIdUser(), commandLines));
+            model.addAttribute("total", total);
+            basket.clear();
         }
 
-        User user = (User) authentication.getPrincipal();
-        orderDataAccess.save(new Order(new Date(), user.getIdUser(),commandLines));
-        model.addAttribute("total", total);
-        basket.clear();
+        model.addAttribute("title","Pinthouse");
         return "integrated:paypal";
     }
 
