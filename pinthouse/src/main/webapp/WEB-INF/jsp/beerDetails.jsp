@@ -24,7 +24,7 @@
             </ul>
         </div>
         <div id="right-column">
-            <p>${beer.price}€</p>
+            <p><spring:message code="Price"/> : ${beer.price}€</p>
             <form:form  id="quantityBeer"
                         method="post"
                         action="/pinthouse/beerDetails/${beer.name}/send"

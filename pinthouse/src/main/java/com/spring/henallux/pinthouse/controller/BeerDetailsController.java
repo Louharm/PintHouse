@@ -23,9 +23,6 @@ public class BeerDetailsController extends SuperController {
         this.beerDataAccess = beerDataAccess;
     }
 
-    @ModelAttribute(Constants.COMMAND_LINE)
-    public CommandLine commandLine() {return new CommandLine();}
-
     @RequestMapping (method = RequestMethod.GET)
     public String home (Model model, @PathVariable() final String name){
         model.addAttribute("name", name);

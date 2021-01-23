@@ -25,6 +25,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
             "/css/**",
             "/images/**",
             "/beerDetails/**",
+            "/cart/less/**",
+            "/cart/plus/**",
             "/cart/delete/**",
             "/cart"
     };

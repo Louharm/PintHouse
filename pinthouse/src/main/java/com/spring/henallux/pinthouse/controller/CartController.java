@@ -18,7 +18,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 @Controller
-@RequestMapping(value= {"/cart","/cart/delete/{name}"})
+@RequestMapping(value= "/cart")
 @SessionAttributes(Constants.BASKET)
 public class CartController extends SuperController {
     private final BeerDataAccess beerDataAccess;
@@ -32,11 +32,8 @@ public class CartController extends SuperController {
     }
 
     @RequestMapping (method = RequestMethod.GET)
-    public String home (@PathVariable (required = false) String name, Model model, @ModelAttribute(Constants.BASKET) HashMap<String, Integer> basket){
+    public String home (Model model, @ModelAttribute(Constants.BASKET) HashMap<String, Integer> basket){
         if (basket != null) {
-            if (name != null) {
-                basket.remove(name);
-            }
             ArrayList<Beer> beers = new ArrayList<>();
             total = 0.0;
             for (String nameBeer : basket.keySet()) {
@@ -51,6 +48,25 @@ public class CartController extends SuperController {
         model.addAttribute("title","Pinthouse");
         return "integrated:cart";
     }
+
+    @RequestMapping (method = RequestMethod.GET, value="/{operation}/{beer}")
+    public String less (@PathVariable String beer, @PathVariable String operation, @ModelAttribute(Constants.BASKET) HashMap<String, Integer> basket){
+        if (basket != null) {
+            if (!operation.equals("delete")){
+                int quantity = basket.get(beer);
+                quantity += operation.equals("less") ? -1 : 1;
+                if (quantity == 0) {
+                    basket.remove(beer);
+                } else {
+                    basket.replace(beer, quantity);
+                }
+            }else{
+                basket.remove(beer);
+            }
+        }
+        return "redirect:/cart";
+    }
+
 
     @RequestMapping(method = RequestMethod.GET, value = "/paypal")
     public String paypal(Model model, @ModelAttribute(Constants.BASKET) HashMap<String, Integer> basket, Authentication authentication){

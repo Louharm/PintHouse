@@ -1,0 +1,35 @@
+#body{
+    text-align: center;
+}
+#tableCart table{
+    width: 750px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    text-align: center;
+}
+#tableCart td, #tableCart th{
+    padding: 5px;
+    border: 1px solid lemonchiffon;
+}
+#tableCart #emptyCase{
+    border-left: none;
+    border-bottom: none;
+}
+#tableCart .deleteButton{
+    border: none;
+}
+#tableCart button{
+    margin: 5px;
+}
+#titleProduct{
+    width:400px;
+}
+#titlePrice{
+    width:90px;
+}
+#titleQuantity{
+    width:130px;
+}
+#titleTotal{
+    width:190px;
+}

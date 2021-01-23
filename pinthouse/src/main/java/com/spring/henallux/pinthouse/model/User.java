@@ -40,8 +40,10 @@ public class User implements UserDetails {
     @NotEmpty
     @Pattern(regexp="[^0-9]*")
     private String street;
-    @NotEmpty
-    private String numHouse;
+    @NotNull
+    private Integer numHouse;
+    private String box;
+    private String numHouseBox;
     @Pattern(regexp="(\\+\\d{2} \\d{3}/\\d{2}\\.\\d{2}\\.\\d{2})|()")
     private String phoneNumber;
     @NotEmpty
@@ -234,12 +236,28 @@ public class User implements UserDetails {
         this.street = street;
     }
 
-    public String getNumHouse() {
+    public Integer getNumHouse() {
         return numHouse;
     }
 
-    public void setNumHouse(String numHouse) {
+    public void setNumHouse(Integer numHouse) {
         this.numHouse = numHouse;
+    }
+
+    public String getBox() {
+        return box;
+    }
+
+    public void setBox(String box) {
+        this.box = box;
+    }
+
+    public String getNumHouseBox() {
+        return numHouseBox;
+    }
+
+    public void setNumHouseBox(String numHouseBox) {
+        this.numHouseBox = numHouseBox;
     }
 
     public String getPhoneNumber() {

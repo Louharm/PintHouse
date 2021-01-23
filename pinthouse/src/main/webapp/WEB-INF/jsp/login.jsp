@@ -16,7 +16,9 @@
         <form:password path="password"/>
         <br/>
         <br/>
-        <form:button><spring:message code="SignIn"/></form:button>
+        <div id="buttonForm">
+            <form:button><spring:message code="SignIn"/></form:button>
+        </div>
     </form:form>
     <a href='<spring:url value="/inscription"/>' class="linkToButton"><spring:message code="SingUp"/></a>
 </div>

@@ -18,10 +18,11 @@
 }
 #menu button {
     display:block;
-    width:200px;
-    color:olive;
+    width: 200px;
     border: none;
-    background-color: lemonchiffon;
+    font-weight: normal;
+    padding: 0;
+    margin: 0;
 }
 #category{
     margin:0 auto;
@@ -36,10 +37,13 @@
     grid-template-columns: auto auto auto;
     padding: 10px;
 }
+.AllBeersInStore button {
+    padding: 0;
+    width: 350px;
+}
 
 .beerDisplay {
     display: block;
-    border: 1px solid rgba(0, 0, 0, 0.8);
     padding: 20px;
     margin : 5px;
     text-align: center;

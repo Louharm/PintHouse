@@ -24,8 +24,8 @@ public class UserEntity {
     @Column(name = "street")
     private String street;
 
-    @Column(name = "numhouse")
-    private String numHouse;
+    @Column(name = "numhousebox")
+    private String numHouseBox;
 
     @Column(name = "phonenumber")
     private String phoneNumber;
@@ -75,8 +75,8 @@ public class UserEntity {
         return street;
     }
 
-    public String getNumHouse() {
-        return numHouse;
+    public String getNumHouseBox() {
+        return numHouseBox;
     }
 
     public String getPhoneNumber() {
@@ -131,8 +131,8 @@ public class UserEntity {
         this.street = street;
     }
 
-    public void setNumHouse(String numHouse) {
-        this.numHouse = numHouse;
+    public void setNumHouseBox(String numHouseBox) {
+        this.numHouseBox = numHouseBox;
     }
 
     public void setPhoneNumber(String phoneNumber) {

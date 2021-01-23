@@ -8,12 +8,10 @@ input{
 .petitChamp{
     width: 75px;
 }
-form button{
-    padding: 5px;
-    width:100px;
-    margin: auto;
-    border-radius: 10px;
-}
 form select{
     width: 200px;
+}
+#buttonForm{
+    width: 100px;
+    margin: 0 auto;
 }

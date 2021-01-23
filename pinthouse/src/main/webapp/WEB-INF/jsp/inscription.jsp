@@ -37,8 +37,10 @@
         <form:errors path="street"/>
         <br/>
         <form:label path="numHouse"><spring:message code="Number"/> :</form:label>
-        <form:input path="numHouse" class="petitChamp"/>
+        <form:input type="number" path="numHouse"  min="1" class="petitChamp"/>
         <form:errors path="numHouse"/>
+        <form:label path="box"><spring:message code="Box"/> :</form:label>
+        <form:input path="box" class="petitChamp"/>
         <br/>
         <form:label path="city"><spring:message code="City"/> :</form:label>
         <form:input path="city"/>
@@ -58,7 +60,9 @@
         <form:input path="phoneNumber"/>
         <form:errors path="phoneNumber"/>
         <br/>
-        <form:button><spring:message code="SingUp"/></form:button>
+        <div id="buttonForm">
+            <form:button><spring:message code="SingUp"/></form:button>
+        </div>
     </form:form>
 </div>
 </body>

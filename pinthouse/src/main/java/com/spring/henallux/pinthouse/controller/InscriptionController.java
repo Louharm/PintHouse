@@ -69,6 +69,10 @@ public class InscriptionController extends SuperController {
                     user.setCityId(city.getId());
                     user.setIdUser(0);
                     user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+                    if(user.getPhoneNumber().isEmpty()){
+                        user.setPhoneNumber(null);
+                    }
+                    user.setNumHouseBox(user.getNumHouse() + " " + user.getBox());
                     userDataAccess.save(user);
                     return "redirect:/authenticated";
                 }

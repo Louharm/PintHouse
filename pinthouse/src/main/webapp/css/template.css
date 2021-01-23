@@ -1,7 +1,6 @@
 body{
     background-color: olive;
     color: lemonchiffon;
-
     font-family: "Netto", helvetica, arial, "sans-serif"
 }
 h2{
@@ -40,4 +39,14 @@ h1{
 img{
     width: 35px;
     height: 35px;
+}
+
+button{
+    background-color: lemonchiffon;
+    color: olive;
+    padding: 7px;
+    width: auto;
+    border-radius: 10px;
+    font-weight: bold;
+    margin: 10px;
 }

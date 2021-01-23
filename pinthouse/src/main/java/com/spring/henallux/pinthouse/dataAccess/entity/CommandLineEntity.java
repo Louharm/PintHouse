@@ -15,6 +15,9 @@ public class CommandLineEntity {
     @Column(name = "beer_name")
     private String beerName;
 
+    @Column(name = "quantity")
+    private Integer quantity;
+
     @Column(name = "command_id")
     private Integer commandId;
 
@@ -52,5 +55,13 @@ public class CommandLineEntity {
 
     public void setCommandId(Integer commandId) {
         this.commandId = commandId;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 }

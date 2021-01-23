@@ -21,13 +21,13 @@
             <a href='<spring:url value="/inscription"/>'><spring:message code="SingUp"/></a>
         </sec:authorize>
         <sec:authorize access="isAuthenticated()">
-            <a href='<spring:url value="/logout"/>'>Déconnexion</a>
-            Bonjour, ${pageContext.request.userPrincipal.principal.firstName}
+            <a href='<spring:url value="/logout"/>'><spring:message code="LogOut"/></a>
+            <spring:message code="Hello"/> ${pageContext.request.userPrincipal.principal.firstName}
         </sec:authorize>
         <a href='<spring:url value="/cart"/>'><img src='<spring:url value="/images/cart.png"/>' alt="Panier"/></a>
     </div>
 </div>
-<div>
+<div id="body">
     <tiles:insertAttribute name="main-content"/>
 </div>
 <div id="foot">
